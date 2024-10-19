@@ -82,6 +82,16 @@
             border-radius: 8px;
             transition: background 0.3s, color 0.3s;
         }
+        .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -89,6 +99,49 @@
         }
         .wide-card {
             grid-column: span 2;
+        }
+        @media (max-width: 1024px) {
+            .dashboard {
+                padding-left: 260px;
+            }
+            .sidebar {
+                width: 260px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .dashboard {
+                padding-left: 200px;
+            }
+            .sidebar {
+                width: 200px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .dashboard {
+                padding-left: 160px;
+                padding-right: 10px;
+            }
+            .sidebar {
+                width: 160px;
+                padding: 10px;
+            }
+            .sidebar a {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+            .sidebar .sidebar-header {
+                font-size: 1.8em;
+            }
+            .sidebar .sidebar-footer a {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -101,13 +154,15 @@
             <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
             <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
             <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
-            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/pill.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/sms.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
             <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
         </nav>
         <div class="sidebar-footer">
-            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+            <a href="index.html"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
         </div>        
     </div>
+
     <!-- Main content -->
     <div class="dashboard">
         <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Historial Médico</h2>
@@ -144,53 +199,32 @@
     </div>
 
     <script>
-        // Función para cargar el historial médico
-        function cargarHistorial() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "get_medical_history.php", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var data = JSON.parse(xhr.responseText);
+        // Cargar datos ficticios de visitas, exámenes, y alergias usando la API de RandomUser
+        async function cargarHistorial() {
+            const response = await fetch('https://randomuser.me/api/?results=5');
+            const data = await response.json();
+            const visitas = data.results;
 
-                    // Mostrar visitas médicas
-                    var visitasLista = document.getElementById("visitas-lista");
-                    if (data.visitas.length > 0) {
-                        data.visitas.forEach(function (visita) {
-                            var li = document.createElement("li");
-                            li.textContent = visita.doctor + " - " + visita.especialidad + " - " + visita.fecha_visita;
-                            visitasLista.appendChild(li);
-                        });
-                    } else {
-                        visitasLista.innerHTML = "<p>No hay visitas médicas registradas.</p>";
-                    }
+            const visitasLista = document.getElementById('visitas-lista');
+            const resultadosLista = document.getElementById('resultados-lista');
+            const condicionesLista = document.getElementById('condiciones-lista');
 
-                    // Mostrar resultados de exámenes
-                    var resultadosLista = document.getElementById("resultados-lista");
-                    if (data.resultados.length > 0) {
-                        data.resultados.forEach(function (resultado) {
-                            var li = document.createElement("li");
-                            li.textContent = resultado.examen + " - " + resultado.fecha_examen + " - " + resultado.resultado;
-                            resultadosLista.appendChild(li);
-                        });
-                    } else {
-                        resultadosLista.innerHTML = "<p>No hay resultados de exámenes.</p>";
-                    }
+            visitas.forEach((usuario, index) => {
+                const visitaItem = document.createElement('li');
+                visitaItem.textContent = `Visita ${index + 1}: ${usuario.name.first} ${usuario.name.last} - ${new Date(usuario.registered.date).toLocaleDateString()}`;
+                visitasLista.appendChild(visitaItem);
 
-                    // Mostrar condiciones crónicas
-                    var condicionesLista = document.getElementById("condiciones-lista");
-                    if (data.condiciones.length > 0) {
-                        data.condiciones.forEach(function (condicion) {
-                            var li = document.createElement("li");
-                            li.textContent = condicion.nombre_condicion;
-                            condicionesLista.appendChild(li);
-                        });
-                    } else {
-                        condicionesLista.innerHTML = "<p>No hay condiciones crónicas registradas.</p>";
-                    }
-                }
-            };
-            xhr.send();
+                const resultadoItem = document.createElement('li');
+                resultadoItem.textContent = `Examen ${index + 1}: ${usuario.name.first} - Resultado: ${Math.random() > 0.5 ? 'Positivo' : 'Negativo'}`;
+                resultadosLista.appendChild(resultadoItem);
+
+                const condicionItem = document.createElement('li');
+                condicionItem.textContent = `${usuario.name.first} sufre de ${Math.random() > 0.5 ? 'Asma' : 'Diabetes'}`;
+                condicionesLista.appendChild(condicionItem);
+            });
         }
+
+        window.onload = cargarHistorial;
 
         // Función para subir un documento médico
         document.getElementById("upload-form").onsubmit = function (event) {
@@ -214,9 +248,7 @@
             };
             xhr.send(formData);
         };
-
-        // Cargar el historial médico cuando la página esté lista
-        window.onload = cargarHistorial;
     </script>
 </body>
 </html>
+
