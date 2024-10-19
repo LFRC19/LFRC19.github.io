@@ -17,7 +17,7 @@
             background-color: #f4f4f4;
             min-height: 100vh;
             padding: 20px;
-            padding-left: 300px;
+            padding-left: 20px;
             padding-right: 20px;
         }
         .card {
@@ -25,20 +25,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin: 10px;
+            margin: 10px 0;
             flex: 1;
-        }
-        .card h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .card ul {
-            list-style: none;
-            padding: 0;
-        }
-        .card ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
         }
         .sidebar {
             position: fixed;
@@ -53,53 +41,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: all 0.3s ease-in-out;
         }
-        .sidebar a {
-            display: block;
-            padding: 15px 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            width: 100%;
-            text-align: left;
-            transition: background 0.3s, color 0.3s;
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .dashboard {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
-        .sidebar a:hover {
-            background-color: #0056b3;
-            color: #ffeb3b;
-        }
-        .button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: background 0.3s, color 0.3s;
-        }
-        .button:hover {
-            background-color: #0056b3;
-            color: #ffeb3b;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .wide-card {
-            grid-column: span 2;
-        }
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .profile-header img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            margin-right: 20px;
+        @media (max-width: 640px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -121,6 +79,7 @@
             <a href="index.html"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
         </div>        
     </div>
+
     <!-- Main content -->
     <div class="dashboard">
         <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Perfil del Usuario</h2>
@@ -132,48 +91,36 @@
             </div>
         </div>
         <!-- Grid container for the cards -->
-        <div class="grid-container">
+        <div class="grid-container grid md:grid-cols-2 gap-4">
             <!-- Información personal -->
             <div class="card">
                 <h3 class="text-teal-800">Información Personal</h3>
-                <ul id="info-personal">
-                    <!-- Aquí se llenará la información personal del usuario -->
-                </ul>
+                <ul id="info-personal"></ul>
             </div>
             <!-- Detalles de contacto -->
             <div class="card">
                 <h3 class="text-teal-800">Detalles de Contacto</h3>
-                <ul id="detalles-contacto">
-                    <!-- Aquí se llenarán los detalles de contacto -->
-                </ul>
+                <ul id="detalles-contacto"></ul>
             </div>
             <!-- Preferencias de notificaciones -->
             <div class="card">
                 <h3 class="text-teal-800">Preferencias de Notificaciones</h3>
                 <ul>
                     <li>
-                        <label>
-                            <input type="checkbox" checked> Notificaciones por correo electrónico
-                        </label>
+                        <label><input type="checkbox" checked> Notificaciones por correo electrónico</label>
                     </li>
                     <li>
-                        <label>
-                            <input type="checkbox" checked> Notificaciones por SMS
-                        </label>
+                        <label><input type="checkbox" checked> Notificaciones por SMS</label>
                     </li>
                     <li>
-                        <label>
-                            <input type="checkbox"> Notificaciones push
-                        </label>
+                        <label><input type="checkbox"> Notificaciones push</label>
                     </li>
                 </ul>
             </div>
             <!-- Información de seguros médicos -->
             <div class="card">
                 <h3 class="text-teal-800">Información de Seguros Médicos</h3>
-                <ul id="info-seguros">
-                    <!-- Aquí se llenará la información de seguros -->
-                </ul>
+                <ul id="info-seguros"></ul>
             </div>
         </div>
     </div>
