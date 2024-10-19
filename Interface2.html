@@ -17,7 +17,7 @@
             background-color: #f4f4f4;
             min-height: 100vh;
             padding: 20px;
-            padding-left: 20px;
+            padding-left: 300px;
             padding-right: 20px;
         }
         .card {
@@ -25,8 +25,20 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin: 10px 0;
+            margin: 10px;
             flex: 1;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
         }
         .sidebar {
             position: fixed;
@@ -41,22 +53,119 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.3s ease-in-out;
         }
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .sidebar-header {
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar-footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #007bff;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .wide-card {
+            grid-column: span 2;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        @media (max-width: 1024px) {
             .dashboard {
-                padding-left: 0;
-                padding-right: 0;
+                padding-left: 260px;
             }
-        }
-        @media (max-width: 640px) {
+            .sidebar {
+                width: 260px;
+            }
             .grid-container {
                 grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .dashboard {
+                padding-left: 200px;
+            }
+            .sidebar {
+                width: 200px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .dashboard {
+                padding-left: 160px;
+                padding-right: 10px;
+            }
+            .sidebar {
+                width: 160px;
+                padding: 10px;
+            }
+            .sidebar a {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+            .sidebar .sidebar-header {
+                font-size: 1.8em;
+            }
+            .sidebar .sidebar-footer a {
+                padding: 8px 16px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -70,13 +179,13 @@
             <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
             <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
             <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
-            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/pill.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
             <a href="Notificaciones10.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/appointment-reminders.png" class="inline-block w-6 h-6 mr-2"/>Notificaciones</a>
-            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/speech.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
-            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/sms.png" class="inline-block w-6 h-6 mr-2"/>/>Mensajería</a>
+            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/chat-message.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
         </nav>
         <div class="sidebar-footer">
-            <a href="index.html"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
         </div>        
     </div>
 
@@ -84,91 +193,97 @@
     <div class="dashboard">
         <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Perfil del Usuario</h2>
         <div class="profile-header">
-            <img src="Mediconect/Interfaces/Recursos/Perfil.png" alt="Foto de perfil">
+            <img id="foto-perfil" src="Mediconect/Interfaces/Recursos/Perfil.png" alt="Foto de perfil">
             <div>
-                <h3 class="text-2xl font-semibold" id="nombre-usuario">Luis Fernando Rodriguez Cruz</h3>
+                <h3 class="text-2xl font-semibold" id="nombre-usuario">Cargando...</h3>
                 <p class="text-teal-800">Usuario Activo</p>
             </div>
         </div>
         <!-- Grid container for the cards -->
-        <div class="grid-container grid md:grid-cols-2 gap-4">
+        <div class="grid-container">
             <!-- Información personal -->
             <div class="card">
                 <h3 class="text-teal-800">Información Personal</h3>
-                <ul id="info-personal"></ul>
+                <ul id="info-personal">
+                    <!-- Aquí se llenará la información personal del usuario -->
+                </ul>
             </div>
             <!-- Detalles de contacto -->
             <div class="card">
                 <h3 class="text-teal-800">Detalles de Contacto</h3>
-                <ul id="detalles-contacto"></ul>
+                <ul id="detalles-contacto">
+                    <!-- Aquí se llenarán los detalles de contacto -->
+                </ul>
             </div>
             <!-- Preferencias de notificaciones -->
             <div class="card">
                 <h3 class="text-teal-800">Preferencias de Notificaciones</h3>
                 <ul>
                     <li>
-                        <label><input type="checkbox" checked> Notificaciones por correo electrónico</label>
+                        <label>
+                            <input type="checkbox" checked> Notificaciones por correo electrónico
+                        </label>
                     </li>
                     <li>
-                        <label><input type="checkbox" checked> Notificaciones por SMS</label>
+                        <label>
+                            <input type="checkbox" checked> Notificaciones por SMS
+                        </label>
                     </li>
                     <li>
-                        <label><input type="checkbox"> Notificaciones push</label>
+                        <label>
+                            <input type="checkbox"> Notificaciones push
+                        </label>
                     </li>
                 </ul>
             </div>
             <!-- Información de seguros médicos -->
             <div class="card">
                 <h3 class="text-teal-800">Información de Seguros Médicos</h3>
-                <ul id="info-seguros"></ul>
+                <ul id="info-seguros">
+                    <!-- Aquí se llenará la información de seguros -->
+                </ul>
             </div>
         </div>
     </div>
 
     <script>
-        // Función para cargar los datos del perfil del usuario
-        function cargarPerfil() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "get_user_data.php", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var data = JSON.parse(xhr.responseText);
+        async function cargarPerfil() {
+            const response = await fetch('https://randomuser.me/api/');
+            const data = await response.json();
+            const usuario = data.results[0];
 
-                    if (!data.error) {
-                        document.getElementById("nombre-usuario").textContent = data.nombre;
+            // Actualizar foto de perfil
+            document.getElementById("foto-perfil").src = usuario.picture.large;
 
-                        // Información personal
-                        var infoPersonal = document.getElementById("info-personal");
-                        infoPersonal.innerHTML = `
-                            <li><strong>Nombre:</strong> ${data.nombre}</li>
-                            <li><strong>Fecha de Nacimiento:</strong> ${data.fecha_nacimiento}</li>
-                            <li><strong>Género:</strong> ${data.genero}</li>
-                        `;
+            // Nombre de usuario
+            document.getElementById("nombre-usuario").textContent = `${usuario.name.first} ${usuario.name.last}`;
 
-                        // Detalles de contacto
-                        var detallesContacto = document.getElementById("detalles-contacto");
-                        detallesContacto.innerHTML = `
-                            <li><strong>Correo Electrónico:</strong> ${data.correo}</li>
-                            <li><strong>Teléfono:</strong> ${data.telefono}</li>
-                            <li><strong>Dirección:</strong> ${data.direccion}</li>
-                        `;
+            // Información personal
+            const infoPersonal = document.getElementById("info-personal");
+            infoPersonal.innerHTML = `
+                <li><strong>Nombre:</strong> ${usuario.name.first} ${usuario.name.last}</li>
+                <li><strong>Fecha de Nacimiento:</strong> ${new Date(usuario.dob.date).toLocaleDateString()}</li>
+                <li><strong>Género:</strong> ${usuario.gender === 'male' ? 'Masculino' : 'Femenino'}</li>
+            `;
 
-                        // Información de seguros
-                        var infoSeguros = document.getElementById("info-seguros");
-                        infoSeguros.innerHTML = `
-                            <li><strong>Aseguradora:</strong> ${data.aseguradora}</li>
-                            <li><strong>Número de Póliza:</strong> ${data.numero_poliza}</li>
-                            <li><strong>Fecha de Vencimiento:</strong> ${data.fecha_vencimiento}</li>
-                        `;
-                    } else {
-                        alert(data.error);
-                    }
-                }
-            };
-            xhr.send();
+            // Detalles de contacto
+            const detallesContacto = document.getElementById("detalles-contacto");
+            detallesContacto.innerHTML = `
+                <li><strong>Correo Electrónico:</strong> ${usuario.email}</li>
+                <li><strong>Teléfono:</strong> ${usuario.phone}</li>
+                <li><strong>Dirección:</strong> ${usuario.location.street.name}, ${usuario.location.city}, ${usuario.location.country}</li>
+            `;
+
+            // Información de seguros (simulada)
+            const infoSeguros = document.getElementById("info-seguros");
+            infoSeguros.innerHTML = `
+                <li><strong>Aseguradora:</strong> MediConect Seguros</li>
+                <li><strong>Número de Póliza:</strong> 123456789</li>
+                <li><strong>Fecha de Vencimiento:</strong> 12/12/2025</li>
+            `;
         }
 
-        // Cargar los datos cuando la página esté lista
+        // Cargar datos al cargar la página
         window.onload = cargarPerfil;
     </script>
 </body>
