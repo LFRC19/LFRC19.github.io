@@ -17,7 +17,7 @@
             background-color: #f4f4f4;
             min-height: 100vh;
             padding: 20px;
-            padding-left: 300px; /* Space for the sidebar */
+            padding-left: 300px;
             padding-right: 20px;
         }
         .card {
@@ -32,9 +32,6 @@
             font-size: 1.5em;
             margin-bottom: 10px;
         }
-        .card p, .card ul {
-            margin-bottom: 5px;
-        }
         .card ul {
             list-style: none;
             padding: 0;
@@ -42,9 +39,6 @@
         .card ul li {
             padding: 10px 0;
             border-bottom: 1px solid #eee;
-        }
-        .card ul li:last-child {
-            border-bottom: none;
         }
         .sidebar {
             position: fixed;
@@ -80,13 +74,13 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
-        .sidebar .sidebar-footer {
+        .sidebar-footer {
             margin-top: auto;
             width: 100%;
             text-align: center;
             padding: 20px 0;
         }
-        .sidebar .sidebar-footer a {
+        .sidebar-footer a {
             display: inline-block;
             padding: 10px 20px;
             background-color: #ffeb3b;
@@ -94,7 +88,7 @@
             border-radius: 8px;
             transition: background 0.3s, color 0.3s;
         }
-        .sidebar .sidebar-footer a:hover {
+        .sidebar-footer a:hover {
             background-color: #ffc107;
             color: #0056b3;
         }
@@ -120,23 +114,9 @@
         .wide-card {
             grid-column: span 2;
         }
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-        }
-        .info-item strong {
-            flex: 1;
-        }
-        .info-item span {
-            flex: 2;
-        }
-        .info-item:last-child {
-            border-bottom: none;
-        }
         @media (max-width: 1024px) {
             .dashboard {
-                padding-left: 20px; 
+                padding-left: 20px;
             }
             .sidebar {
                 width: 100%;
@@ -147,7 +127,7 @@
                 display: inline-block;
                 padding: 10px;
             }
-            .sidebar .sidebar-footer {
+            .sidebar-footer {
                 position: static;
             }
             .grid-container {
@@ -162,23 +142,21 @@
         <div class="sidebar-header">Mi Agenda Mediconnect</div>
         <nav>
             <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
-            <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
+            <a href="Medicos7.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
             <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
             <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
-            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
-            <a href="Notificaciones10.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/appointment-reminders.png" class="inline-block w-6 h-6 mr-2"/>Notificaciones</a>
-            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/speech.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
             <a href="PanelFarmacias9.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/pharmacy-shop.png" class="inline-block w-6 h-6 mr-2"/>Farmacias</a>
+            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/sms.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
             <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
         </nav>
         <div class="sidebar-footer">
-            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
-        </div>        
+            <a href="index.html"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>
     </div>
+
     <!-- Main content -->
     <div class="dashboard">
         <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Integración con Farmacias</h2>
-        <!-- Grid container for the cards -->
         <div class="grid-container">
             <!-- Búsqueda y ubicación de farmacias cercanas -->
             <div class="card">
@@ -207,10 +185,10 @@
                 <h3 class="text-teal-800">Configuración de la Cuenta</h3>
                 <p>Administra la configuración de tu cuenta:</p>
                 <div class="mt-4">
-                    <div class="info-item"><strong>Nombre:</strong> <span>Luis Fernando Rodriguez Cruz</span></div>
-                    <div class="info-item"><strong>Correo Electrónico:</strong> <span>luisfernandorc16@gmail.com</span></div>
-                    <div class="info-item"><strong>Teléfono:</strong> <span>+52 664 238 2390</span></div>
-                    <div class="info-item"><strong>Dirección:</strong> <span>Rampa Cristobal Colon, Tijuana BC, México</span></div>
+                    <div class="info-item"><strong>Nombre:</strong> <span id="nombre-usuario"></span></div>
+                    <div class="info-item"><strong>Correo Electrónico:</strong> <span id="correo-usuario"></span></div>
+                    <div class="info-item"><strong>Teléfono:</strong> <span id="telefono-usuario"></span></div>
+                    <div class="info-item"><strong>Dirección:</strong> <span id="direccion-usuario"></span></div>
                 </div>
                 <div class="mt-4">
                     <button class="button">Cambiar Contraseña</button>
@@ -221,58 +199,47 @@
     </div>
 
     <script>
-        // Función para obtener las farmacias
-        async function getFarmacias() {
-            const response = await fetch('get_farmacias.php'); // Se llama al archivo PHP que obtiene las farmacias
-            const farmacias = await response.json();
-            
+        // Función para cargar datos ficticios de farmacias, medicamentos y usuario usando la API de RandomUser
+        async function cargarDatos() {
+            const response = await fetch('https://randomuser.me/api/?results=5');
+            const data = await response.json();
+
             const farmaciasList = document.getElementById('farmacias-list');
             const farmaciasButtons = document.getElementById('farmacias-buttons');
-            
-            farmacias.forEach(farmacia => {
+            const medicamentosList = document.getElementById('medicamentos-notificaciones');
+            const comprasList = document.getElementById('historial-compras');
+            const usuario = data.results[0];
+
+            // Actualizar la sección de configuración de cuenta con datos ficticios
+            document.getElementById('nombre-usuario').textContent = `${usuario.name.first} ${usuario.name.last}`;
+            document.getElementById('correo-usuario').textContent = usuario.email;
+            document.getElementById('telefono-usuario').textContent = usuario.phone;
+            document.getElementById('direccion-usuario').textContent = `${usuario.location.street.name} ${usuario.location.street.number}, ${usuario.location.city}, ${usuario.location.country}`;
+
+            // Generar farmacias cercanas
+            data.results.forEach((usuario, index) => {
+                const farmacia = `Farmacia ${index + 1}`;
                 const li = document.createElement('li');
-                li.textContent = farmacia.nombre;
+                li.textContent = `${farmacia} - ${usuario.location.street.name}, ${usuario.location.city}, ${usuario.location.country}`;
                 farmaciasList.appendChild(li);
-                
+
                 const button = document.createElement('button');
                 button.className = 'button';
-                button.textContent = `Enviar a ${farmacia.nombre}`;
+                button.textContent = `Enviar a ${farmacia}`;
                 farmaciasButtons.appendChild(button);
+
+                const medicamentoNotificacion = document.createElement('li');
+                medicamentoNotificacion.textContent = `${index % 2 === 0 ? 'Paracetamol' : 'Ibuprofeno'} - Disponible en ${farmacia}`;
+                medicamentosList.appendChild(medicamentoNotificacion);
+
+                const compraHistorial = document.createElement('li');
+                compraHistorial.textContent = `${index % 2 === 0 ? 'Paracetamol' : 'Ibuprofeno'} - Comprado en ${farmacia} el ${new Date().toLocaleDateString()}`;
+                comprasList.appendChild(compraHistorial);
             });
         }
 
-        // Función para obtener las notificaciones de medicamentos
-        async function getNotificacionesMedicamentos() {
-            const response = await fetch('get_notificaciones_medicamentos.php'); // Se llama al archivo PHP para notificaciones
-            const notificaciones = await response.json();
-
-            const medicamentosList = document.getElementById('medicamentos-notificaciones');
-            notificaciones.forEach(notificacion => {
-                const li = document.createElement('li');
-                li.textContent = `${notificacion.medicamento} - ${notificacion.estado} en ${notificacion.farmacia}`;
-                medicamentosList.appendChild(li);
-            });
-        }
-
-        // Función para obtener el historial de compras
-        async function getHistorialCompras() {
-            const response = await fetch('get_historial_compras.php'); // Se llama al archivo PHP que obtiene el historial
-            const compras = await response.json();
-
-            const comprasList = document.getElementById('historial-compras');
-            compras.forEach(compra => {
-                const li = document.createElement('li');
-                li.textContent = `${compra.medicamento} - Comprado en ${compra.farmacia} el ${compra.fecha}`;
-                comprasList.appendChild(li);
-            });
-        }
-
-        // Cargar datos al iniciar la página
-        document.addEventListener('DOMContentLoaded', () => {
-            getFarmacias();
-            getNotificacionesMedicamentos();
-            getHistorialCompras();
-        });
+        // Llamar a la función cuando la página esté lista
+        window.onload = cargarDatos;
     </script>
 </body>
 </html>
