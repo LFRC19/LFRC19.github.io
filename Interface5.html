@@ -17,7 +17,7 @@
             background-color: #f4f4f4;
             min-height: 100vh;
             padding: 20px;
-            padding-left: 300px; /* Space for the sidebar */
+            padding-left: 300px;
             padding-right: 20px;
         }
         .card {
@@ -32,9 +32,6 @@
             font-size: 1.5em;
             margin-bottom: 10px;
         }
-        .card p, .card ul {
-            margin-bottom: 5px;
-        }
         .card ul {
             list-style: none;
             padding: 0;
@@ -42,9 +39,6 @@
         .card ul li {
             padding: 10px 0;
             border-bottom: 1px solid #eee;
-        }
-        .card ul li:last-child {
-            border-bottom: none;
         }
         .sidebar {
             position: fixed;
@@ -80,13 +74,13 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
-        .sidebar .sidebar-footer {
+        .sidebar-footer {
             margin-top: auto;
             width: 100%;
             text-align: center;
             padding: 20px 0;
         }
-        .sidebar .sidebar-footer a {
+        .sidebar-footer a {
             display: inline-block;
             padding: 10px 20px;
             background-color: #ffeb3b;
@@ -94,7 +88,7 @@
             border-radius: 8px;
             transition: background 0.3s, color 0.3s;
         }
-        .sidebar .sidebar-footer a:hover {
+        .sidebar-footer a:hover {
             background-color: #ffc107;
             color: #0056b3;
         }
@@ -120,23 +114,9 @@
         .wide-card {
             grid-column: span 2;
         }
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-        }
-        .info-item strong {
-            flex: 1;
-        }
-        .info-item span {
-            flex: 2;
-        }
-        .info-item:last-child {
-            border-bottom: none;
-        }
         @media (max-width: 1024px) {
             .dashboard {
-                padding-left: 20px; 
+                padding-left: 20px;
             }
             .sidebar {
                 width: 100%;
@@ -147,7 +127,7 @@
                 display: inline-block;
                 padding: 10px;
             }
-            .sidebar .sidebar-footer {
+            .sidebar-footer {
                 position: static;
             }
             .grid-container {
@@ -165,61 +145,27 @@
             <a href="Medicos7.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
             <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
             <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
-            <a href="PanelFarmacias9.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="PanelFarmacias9.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/pill.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
             <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
         </nav>
         <div class="sidebar-footer">
-            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
-        </div>        
+            <a href="index.html"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>
     </div>
+
     <!-- Main content -->
     <div class="dashboard">
         <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Gestión de Recetas</h2>
-        <!-- Grid container for the cards -->
         <div class="grid-container">
             <!-- Visualización de recetas actuales -->
             <div class="card">
                 <h3 class="text-teal-800">Recetas Actuales</h3>
-                <ul>
-                    <li>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Amoxicilina</span></div>
-                        <div class="info-item"><strong>Dosis:</strong> <span>500mg</span></div>
-                        <div class="info-item"><strong>Duración:</strong> <span>7 días</span></div>
-                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. López</span></div>
-                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>01/05/2024</span></div>
-                        <button class="button mt-2">Solicitar Renovación</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Metformina</span></div>
-                        <div class="info-item"><strong>Dosis:</strong> <span>850mg</span></div>
-                        <div class="info-item"><strong>Duración:</strong> <span>30 días</span></div>
-                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. Pérez</span></div>
-                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>15/04/2024</span></div>
-                        <button class="button mt-2">Solicitar Renovación</button>
-                    </li>
-                </ul>
+                <ul id="recetas-actuales"></ul>
             </div>
             <!-- Visualización de recetas pasadas -->
             <div class="card">
                 <h3 class="text-teal-800">Recetas Pasadas</h3>
-                <ul>
-                    <li>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Ibuprofeno</span></div>
-                        <div class="info-item"><strong>Dosis:</strong> <span>400mg</span></div>
-                        <div class="info-item"><strong>Duración:</strong> <span>5 días</span></div>
-                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. García</span></div>
-                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>10/03/2024</span></div>
-                        <button class="button mt-2">Repetir Receta</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Loratadina</span></div>
-                        <div class="info-item"><strong>Dosis:</strong> <span>10mg</span></div>
-                        <div class="info-item"><strong>Duración:</strong> <span>10 días</span></div>
-                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. Martínez</span></div>
-                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>20/02/2024</span></div>
-                        <button class="button mt-2">Repetir Receta</button>
-                    </li>
-                </ul>
+                <ul id="recetas-pasadas"></ul>
             </div>
             <!-- Interacción con farmacias -->
             <div class="card wide-card">
@@ -231,23 +177,75 @@
                     <button class="button">Farmacia C</button>
                 </div>
                 <div class="mt-4">
-                    <p class="text-teal-800 font-semibold">Farmacia A</p>
-                    <p>Dirección: Calle Falsa 123, Ciudad, País</p>
-                    <p>Teléfono: +52 123 456 7890</p>
+                    <p class="text-teal-800 font-semibold" id="farmacia-a"></p>
+                    <p id="direccion-a"></p>
+                    <p id="telefono-a"></p>
                 </div>
                 <div class="mt-4">
-                    <p class="text-teal-800 font-semibold">Farmacia B</p>
-                    <p>Dirección: Avenida Siempreviva 742, Ciudad, País</p>
-                    <p>Teléfono: +52 098 765 4321</p>
+                    <p class="text-teal-800 font-semibold" id="farmacia-b"></p>
+                    <p id="direccion-b"></p>
+                    <p id="telefono-b"></p>
                 </div>
                 <div class="mt-4">
-                    <p class="text-teal-800 font-semibold">Farmacia C</p>
-                    <p>Dirección: Calle de la Rosa 567, Ciudad, País</p>
-                    <p>Teléfono: +52 555 555 5555</p>
+                    <p class="text-teal-800 font-semibold" id="farmacia-c"></p>
+                    <p id="direccion-c"></p>
+                    <p id="telefono-c"></p>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Función para cargar datos ficticios de recetas y farmacias usando la API de RandomUser
+        async function cargarRecetasYFarmacias() {
+            const response = await fetch('https://randomuser.me/api/?results=6');
+            const data = await response.json();
+            const recetasActuales = document.getElementById('recetas-actuales');
+            const recetasPasadas = document.getElementById('recetas-pasadas');
+            const farmacias = data.results.slice(3); // Usamos 3 resultados para farmacias
+
+            // Generar recetas actuales y pasadas
+            data.results.slice(0, 3).forEach((usuario, index) => {
+                const recetaActual = `
+                    <li>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>${index % 2 === 0 ? 'Amoxicilina' : 'Metformina'}</span></div>
+                        <div class="info-item"><strong>Dosis:</strong> <span>${index % 2 === 0 ? '500mg' : '850mg'}</span></div>
+                        <div class="info-item"><strong>Duración:</strong> <span>${index % 2 === 0 ? '7 días' : '30 días'}</span></div>
+                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. ${usuario.name.last}</span></div>
+                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>${new Date().toLocaleDateString()}</span></div>
+                        <button class="button mt-2">Solicitar Renovación</button>
+                    </li>`;
+                recetasActuales.innerHTML += recetaActual;
+
+                const recetaPasada = `
+                    <li>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>${index % 2 === 0 ? 'Ibuprofeno' : 'Loratadina'}</span></div>
+                        <div class="info-item"><strong>Dosis:</strong> <span>${index % 2 === 0 ? '400mg' : '10mg'}</span></div>
+                        <div class="info-item"><strong>Duración:</strong> <span>${index % 2 === 0 ? '5 días' : '10 días'}</span></div>
+                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. ${usuario.name.last}</span></div>
+                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>${new Date().toLocaleDateString()}</span></div>
+                        <button class="button mt-2">Repetir Receta</button>
+                    </li>`;
+                recetasPasadas.innerHTML += recetaPasada;
+            });
+
+            // Generar información de farmacias
+            document.getElementById('farmacia-a').textContent = 'Farmacia A';
+            document.getElementById('direccion-a').textContent = `Dirección: ${farmacias[0].location.street.name} ${farmacias[0].location.street.number}, ${farmacias[0].location.city}, ${farmacias[0].location.country}`;
+            document.getElementById('telefono-a').textContent = `Teléfono: ${farmacias[0].phone}`;
+
+            document.getElementById('farmacia-b').textContent = 'Farmacia B';
+            document.getElementById('direccion-b').textContent = `Dirección: ${farmacias[1].location.street.name} ${farmacias[1].location.street.number}, ${farmacias[1].location.city}, ${farmacias[1].location.country}`;
+            document.getElementById('telefono-b').textContent = `Teléfono: ${farmacias[1].phone}`;
+
+            document.getElementById('farmacia-c').textContent = 'Farmacia C';
+            document.getElementById('direccion-c').textContent = `Dirección: ${farmacias[2].location.street.name} ${farmacias[2].location.street.number}, ${farmacias[2].location.city}, ${farmacias[2].location.country}`;
+            document.getElementById('telefono-c').textContent = `Teléfono: ${farmacias[2].phone}`;
+        }
+
+        // Llamar a la función cuando la página esté lista
+        window.onload = cargarRecetasYFarmacias;
+    </script>
 </body>
 </html>
 
