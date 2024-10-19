@@ -18,7 +18,7 @@
             background-color: #f4f4f4;
             min-height: 100vh;
             padding: 20px;
-            padding-left: 300px; /* Space for the sidebar */
+            padding-left: 20px;
             padding-right: 20px;
         }
         .card {
@@ -26,23 +26,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin: 10px;
+            margin: 10px 0;
             flex: 1;
-        }
-        .card h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .card p, .card ul {
-            margin-bottom: 5px;
-        }
-        .card ul {
-            list-style: none;
-            padding: 0;
-        }
-        .card ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
         }
         .sidebar {
             position: fixed;
@@ -57,71 +42,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: all 0.3s ease-in-out;
         }
-        .sidebar a {
-            display: block;
-            padding: 15px 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            width: 100%;
-            text-align: left;
-            transition: background 0.3s, color 0.3s;
-        }
-        .sidebar a:hover {
-            background-color: #0056b3;
-            color: #ffeb3b;
-        }
-        .sidebar .sidebar-header {
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .sidebar .sidebar-footer {
-            margin-top: auto;
-            width: 100%;
-            text-align: center;
-            padding: 20px 0;
-        }
-        .sidebar .sidebar-footer a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #ffeb3b;
-            color: #007bff;
-            border-radius: 8px;
-            transition: background 0.3s, color 0.3s;
-        }
-        .sidebar .sidebar-footer a:hover {
-            background-color: #ffc107;
-            color: #0056b3;
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
         }
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-        .wide-card {
-            grid-column: span 2;
-        }
-        @media (max-width: 1024px) {
-            .dashboard {
-                padding-left: 20px; /* Adjust padding for smaller screens */
-            }
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            .sidebar a {
-                display: inline-block;
-                padding: 10px;
-            }
-            .sidebar .sidebar-footer {
-                position: static;
-            }
+        @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .dashboard {
+                padding: 10px;
             }
         }
     </style>
@@ -145,12 +87,12 @@
     </div>
 
     <!-- Main content -->
-    <div class="dashboard">
+    <div class="dashboard ml-auto md:ml-[300px]">
         <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Resumen de la Agenda Médica</h2>
         <!-- Grid container for the cards -->
         <div class="grid-container">
             <!-- Resumen de la agenda médica -->
-            <div class="card wide-card">
+            <div class="card wide-card col-span-2">
                 <h3 class="text-teal-800">Agenda Médica</h3>
                 <p>Resumen rápido de tus próximas actividades:</p>
                 <ul id="citas-lista">
@@ -172,7 +114,7 @@
                 </ul>
             </div>
             <!-- Gráficas de seguimiento de medicamentos -->
-            <div class="card wide-card">
+            <div class="card wide-card col-span-2">
                 <h3 class="text-teal-800">Seguimiento de Medicamentos</h3>
                 <p>A continuación se muestra el seguimiento de la ingesta de medicamentos:</p>
                 <canvas id="medicationChart" width="400" height="200"></canvas>
