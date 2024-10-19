@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración para Farmacias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gradient-background {
+            background: linear-gradient(160deg, #00f260 0%, #0575e6 100%);
+        }
+        .dashboard {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            padding: 20px;
+            padding-left: 300px; /* Space for the sidebar */
+            padding-right: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card p, .card ul {
+            margin-bottom: 5px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #007bff;
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .sidebar .sidebar-header {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .sidebar .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar .sidebar-footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #007bff;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .wide-card {
+            grid-column: span 2;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .info-item strong {
+            flex: 1;
+        }
+        .info-item span {
+            flex: 2;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .input-wrapper input[type="number"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+        .chart-container canvas {
+            width: 100%;
+            height: 100%;
+        }
+        @media (max-width: 1024px) {
+            .dashboard {
+                padding-left: 20px; 
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar a {
+                display: inline-block;
+                padding: 10px;
+            }
+            .sidebar .sidebar-footer {
+                position: static;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">Panel de Farmacia</div>
+        <nav>
+            <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
+            <a href="GestionRecetas.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Gestión de Recetas</a>
+            <a href="Inventarios.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/inventory.png" class="inline-block w-6 h-6 mr-2"/>Inventarios</a>
+            <a href="Comunicacion.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/chat.png" class="inline-block w-6 h-6 mr-2"/>Comunicación</a>
+            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>        
+    </div>
+    <!-- Main content -->
+    <div class="dashboard">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Panel de Administración para Farmacias</h2>
+        <!-- Grid container for the cards -->
+        <div class="grid-container">
+            <!-- Recepción y gestión de recetas electrónicas -->
+            <div class="card">
+                <h3 class="text-teal-800">Recepción y Gestión de Recetas Electrónicas</h3>
+                <ul>
+                    <li>
+                        <div class="info-item"><strong>Receta de:</strong> <span>Diaz Berumen Maria de los Angeles</span></div>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Amoxicilina 500mg</span></div>
+                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>20/05/2024</span></div>
+                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. López</span></div>
+                        <button class="button mt-2">Procesar</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Receta de:</strong> <span>Marquez Santillan Jose Eduardo</span></div>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Loratadina 10mg</span></div>
+                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>21/05/2024</span></div>
+                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. Pérez</span></div>
+                        <button class="button mt-2">Procesar</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Receta de:</strong> <span>Ortiz Garcia Nayeli</span></div>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Salbutamol 100mcg</span></div>
+                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>22/05/2024</span></div>
+                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. García</span></div>
+                        <button class="button mt-2">Procesar</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Receta de:</strong> <span>Rodriguez Cruz Luis Fernando</span></div>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Paracetamol 500mg</span></div>
+                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>23/05/2024</span></div>
+                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. Hernández</span></div>
+                        <button class="button mt-2">Procesar</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Receta de:</strong> <span>Rojo Chaidez Donovan</span></div>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Losartan 50mg</span></div>
+                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>24/05/2024</span></div>
+                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. Fernández</span></div>
+                        <button class="button mt-2">Procesar</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Actualización de inventarios -->
+            <div class="card">
+                <h3 class="text-teal-800">Actualización de Inventarios</h3>
+                <ul>
+                    <li>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Amoxicilina 500mg</span></div>
+                        <div class="info-item"><strong>Stock Actual:</strong> <span>120 unidades</span></div>
+                        <div class="input-wrapper">
+                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
+                            <button class="button mt-2">Actualizar</button>
+                        </div>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Loratadina 10mg</span></div>
+                        <div class="info-item"><strong>Stock Actual:</strong> <span>80 unidades</span></div>
+                        <div class="input-wrapper">
+                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
+                            <button class="button mt-2">Actualizar</button>
+                        </div>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Salbutamol 100mcg</span></div>
+                        <div class="info-item"><strong>Stock Actual:</strong> <span>50 unidades</span></div>
+                        <div class="input-wrapper">
+                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
+                            <button class="button mt-2">Actualizar</button>
+                        </div>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Paracetamol 500mg</span></div>
+                        <div class="info-item"><strong>Stock Actual:</strong> <span>200 unidades</span></div>
+                        <div class="input-wrapper">
+                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
+                            <button class="button mt-2">Actualizar</button>
+                        </div>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Losartan 50mg</span></div>
+                        <div class="info-item"><strong>Stock Actual:</strong> <span>60 unidades</span></div>
+                        <div class="input-wrapper">
+                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
+                            <button class="button mt-2">Actualizar</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- Comunicación con pacientes para la entrega de medicamentos -->
+            <div class="card wide-card">
+                <h3 class="text-teal-800">Comunicación con Pacientes</h3>
+                <ul>
+                    <li>
+                        <div class="info-item"><strong>Paciente:</strong> <span>Diaz Berumen Maria de los Angeles</span></div>
+                        <div class="info-item"><strong>Último Contacto:</strong> <span>20/05/2024</span></div>
+                        <button class="button mt-2">Iniciar Chat</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Paciente:</strong> <span>Marquez Santillan Jose Eduardo</span></div>
+                        <div class="info-item"><strong>Último Contacto:</strong> <span>21/05/2024</span></div>
+                        <button class="button mt-2">Iniciar Chat</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Paciente:</strong> <span>Ortiz Garcia Nayeli</span></div>
+                        <div class="info-item"><strong>Último Contacto:</strong> <span>22/05/2024</span></div>
+                        <button class="button mt-2">Iniciar Chat</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Paciente:</strong> <span>Rodriguez Cruz Luis Fernando</span></div>
+                        <div class="info-item"><strong>Último Contacto:</strong> <span>23/05/2024</span></div>
+                        <button class="button mt-2">Iniciar Chat</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Paciente:</strong> <span>Rojo Chaidez Donovan</span></div>
+                        <div class="info-item"><strong>Último Contacto:</strong> <span>24/05/2024</span></div>
+                        <button class="button mt-2">Iniciar Chat</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Sección de estadísticas -->
+            <div class="card wide-card">
+                <h3 class="text-teal-800">Estadísticas de Inventarios</h3>
+                <div class="chart-container">
+                    <canvas id="inventoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx = document.getElementById('inventoryChart').getContext('2d');
+            var inventoryChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Amoxicilina', 'Loratadina', 'Salbutamol', 'Paracetamol', 'Losartan'],
+                    datasets: [{
+                        label: 'Stock Actual',
+                        data: [120, 80, 50, 200, 60],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+

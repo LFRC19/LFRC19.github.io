@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Recetas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gradient-background {
+            background: linear-gradient(160deg, #00f260 0%, #0575e6 100%);
+        }
+        .dashboard {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            padding: 20px;
+            padding-left: 300px; /* Space for the sidebar */
+            padding-right: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card p, .card ul {
+            margin-bottom: 5px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #007bff;
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .sidebar .sidebar-header {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .sidebar .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar .sidebar-footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #007bff;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .wide-card {
+            grid-column: span 2;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .info-item strong {
+            flex: 1;
+        }
+        .info-item span {
+            flex: 2;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        @media (max-width: 1024px) {
+            .dashboard {
+                padding-left: 20px; 
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar a {
+                display: inline-block;
+                padding: 10px;
+            }
+            .sidebar .sidebar-footer {
+                position: static;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">Mi Agenda Mediconnect</div>
+        <nav>
+            <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
+            <a href="Medicos7.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
+            <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
+            <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
+            <a href="PanelFarmacias9.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>        
+    </div>
+    <!-- Main content -->
+    <div class="dashboard">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Gestión de Recetas</h2>
+        <!-- Grid container for the cards -->
+        <div class="grid-container">
+            <!-- Visualización de recetas actuales -->
+            <div class="card">
+                <h3 class="text-teal-800">Recetas Actuales</h3>
+                <ul>
+                    <li>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Amoxicilina</span></div>
+                        <div class="info-item"><strong>Dosis:</strong> <span>500mg</span></div>
+                        <div class="info-item"><strong>Duración:</strong> <span>7 días</span></div>
+                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. López</span></div>
+                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>01/05/2024</span></div>
+                        <button class="button mt-2">Solicitar Renovación</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Metformina</span></div>
+                        <div class="info-item"><strong>Dosis:</strong> <span>850mg</span></div>
+                        <div class="info-item"><strong>Duración:</strong> <span>30 días</span></div>
+                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. Pérez</span></div>
+                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>15/04/2024</span></div>
+                        <button class="button mt-2">Solicitar Renovación</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Visualización de recetas pasadas -->
+            <div class="card">
+                <h3 class="text-teal-800">Recetas Pasadas</h3>
+                <ul>
+                    <li>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Ibuprofeno</span></div>
+                        <div class="info-item"><strong>Dosis:</strong> <span>400mg</span></div>
+                        <div class="info-item"><strong>Duración:</strong> <span>5 días</span></div>
+                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. García</span></div>
+                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>10/03/2024</span></div>
+                        <button class="button mt-2">Repetir Receta</button>
+                    </li>
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Medicamento:</strong> <span>Loratadina</span></div>
+                        <div class="info-item"><strong>Dosis:</strong> <span>10mg</span></div>
+                        <div class="info-item"><strong>Duración:</strong> <span>10 días</span></div>
+                        <div class="info-item"><strong>Prescrito por:</strong> <span>Dr. Martínez</span></div>
+                        <div class="info-item"><strong>Fecha de Prescripción:</strong> <span>20/02/2024</span></div>
+                        <button class="button mt-2">Repetir Receta</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Interacción con farmacias -->
+            <div class="card wide-card">
+                <h3 class="text-teal-800">Comprar Medicamentos</h3>
+                <p>Interactúa con farmacias cercanas para comprar tus medicamentos:</p>
+                <div class="flex justify-between mt-4">
+                    <button class="button">Farmacia A</button>
+                    <button class="button">Farmacia B</button>
+                    <button class="button">Farmacia C</button>
+                </div>
+                <div class="mt-4">
+                    <p class="text-teal-800 font-semibold">Farmacia A</p>
+                    <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+                    <p>Teléfono: +52 123 456 7890</p>
+                </div>
+                <div class="mt-4">
+                    <p class="text-teal-800 font-semibold">Farmacia B</p>
+                    <p>Dirección: Avenida Siempreviva 742, Ciudad, País</p>
+                    <p>Teléfono: +52 098 765 4321</p>
+                </div>
+                <div class="mt-4">
+                    <p class="text-teal-800 font-semibold">Farmacia C</p>
+                    <p>Dirección: Calle de la Rosa 567, Ciudad, País</p>
+                    <p>Teléfono: +52 555 555 5555</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integración con Farmacias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gradient-background {
+            background: linear-gradient(160deg, #00f260 0%, #0575e6 100%);
+        }
+        .dashboard {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            padding: 20px;
+            padding-left: 300px; /* Space for the sidebar */
+            padding-right: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card p, .card ul {
+            margin-bottom: 5px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #007bff;
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .sidebar .sidebar-header {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .sidebar .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar .sidebar-footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #007bff;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .wide-card {
+            grid-column: span 2;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .info-item strong {
+            flex: 1;
+        }
+        .info-item span {
+            flex: 2;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        @media (max-width: 1024px) {
+            .dashboard {
+                padding-left: 20px; 
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar a {
+                display: inline-block;
+                padding: 10px;
+            }
+            .sidebar .sidebar-footer {
+                position: static;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">Mi Agenda Mediconnect</div>
+        <nav>
+            <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
+            <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
+            <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
+            <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
+            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Notificaciones10.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/appointment-reminders.png" class="inline-block w-6 h-6 mr-2"/>Notificaciones</a>
+            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/speech.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
+            <a href="PanelFarmacias9.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/pharmacy-shop.png" class="inline-block w-6 h-6 mr-2"/>Farmacias</a>
+            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>        
+    </div>
+    <!-- Main content -->
+    <div class="dashboard">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Integración con Farmacias</h2>
+        <!-- Grid container for the cards -->
+        <div class="grid-container">
+            <!-- Búsqueda y ubicación de farmacias cercanas -->
+            <div class="card">
+                <h3 class="text-teal-800">Farmacias Cercanas</h3>
+                <p>Busca y ubica farmacias cercanas:</p>
+                <ul id="farmacias-list"></ul> <!-- Se cargan las farmacias aquí -->
+            </div>
+            <!-- Envío de recetas electrónicas -->
+            <div class="card">
+                <h3 class="text-teal-800">Envío de Recetas Electrónicas</h3>
+                <p>Envía tus recetas electrónicas a farmacias:</p>
+                <div id="farmacias-buttons" class="flex justify-between mt-4"></div> <!-- Botones de farmacias -->
+            </div>
+            <!-- Notificaciones de disponibilidad de medicamentos -->
+            <div class="card">
+                <h3 class="text-teal-800">Notificaciones de Disponibilidad</h3>
+                <ul id="medicamentos-notificaciones"></ul> <!-- Se cargan las notificaciones aquí -->
+            </div>
+            <!-- Historial de compras de medicamentos -->
+            <div class="card">
+                <h3 class="text-teal-800">Historial de Compras</h3>
+                <ul id="historial-compras"></ul> <!-- Se carga el historial de compras aquí -->
+            </div>
+            <!-- Configuración de la cuenta -->
+            <div class="card wide-card">
+                <h3 class="text-teal-800">Configuración de la Cuenta</h3>
+                <p>Administra la configuración de tu cuenta:</p>
+                <div class="mt-4">
+                    <div class="info-item"><strong>Nombre:</strong> <span>Luis Fernando Rodriguez Cruz</span></div>
+                    <div class="info-item"><strong>Correo Electrónico:</strong> <span>luisfernandorc16@gmail.com</span></div>
+                    <div class="info-item"><strong>Teléfono:</strong> <span>+52 664 238 2390</span></div>
+                    <div class="info-item"><strong>Dirección:</strong> <span>Rampa Cristobal Colon, Tijuana BC, México</span></div>
+                </div>
+                <div class="mt-4">
+                    <button class="button">Cambiar Contraseña</button>
+                    <button class="button mt-2">Actualizar Información</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para obtener las farmacias
+        async function getFarmacias() {
+            const response = await fetch('get_farmacias.php'); // Se llama al archivo PHP que obtiene las farmacias
+            const farmacias = await response.json();
+            
+            const farmaciasList = document.getElementById('farmacias-list');
+            const farmaciasButtons = document.getElementById('farmacias-buttons');
+            
+            farmacias.forEach(farmacia => {
+                const li = document.createElement('li');
+                li.textContent = farmacia.nombre;
+                farmaciasList.appendChild(li);
+                
+                const button = document.createElement('button');
+                button.className = 'button';
+                button.textContent = `Enviar a ${farmacia.nombre}`;
+                farmaciasButtons.appendChild(button);
+            });
+        }
+
+        // Función para obtener las notificaciones de medicamentos
+        async function getNotificacionesMedicamentos() {
+            const response = await fetch('get_notificaciones_medicamentos.php'); // Se llama al archivo PHP para notificaciones
+            const notificaciones = await response.json();
+
+            const medicamentosList = document.getElementById('medicamentos-notificaciones');
+            notificaciones.forEach(notificacion => {
+                const li = document.createElement('li');
+                li.textContent = `${notificacion.medicamento} - ${notificacion.estado} en ${notificacion.farmacia}`;
+                medicamentosList.appendChild(li);
+            });
+        }
+
+        // Función para obtener el historial de compras
+        async function getHistorialCompras() {
+            const response = await fetch('get_historial_compras.php'); // Se llama al archivo PHP que obtiene el historial
+            const compras = await response.json();
+
+            const comprasList = document.getElementById('historial-compras');
+            compras.forEach(compra => {
+                const li = document.createElement('li');
+                li.textContent = `${compra.medicamento} - Comprado en ${compra.farmacia} el ${compra.fecha}`;
+                comprasList.appendChild(li);
+            });
+        }
+
+        // Cargar datos al iniciar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            getFarmacias();
+            getNotificacionesMedicamentos();
+            getHistorialCompras();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Principal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gradient-background {
+            background: linear-gradient(160deg, #00f260 0%, #0575e6 100%);
+        }
+        .dashboard {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            padding: 20px;
+            padding-left: 300px; /* Space for the sidebar */
+            padding-right: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card p, .card ul {
+            margin-bottom: 5px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #007bff;
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .sidebar .sidebar-header {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .sidebar .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar .sidebar-footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #007bff;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .wide-card {
+            grid-column: span 2;
+        }
+        @media (max-width: 1024px) {
+            .dashboard {
+                padding-left: 20px; /* Adjust padding for smaller screens */
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar a {
+                display: inline-block;
+                padding: 10px;
+            }
+            .sidebar .sidebar-footer {
+                position: static;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">Mi Agenda Mediconnect</div>
+        <nav>
+            <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
+            <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
+            <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
+            <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
+            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="dashboard">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Resumen de la Agenda Médica</h2>
+        <!-- Grid container for the cards -->
+        <div class="grid-container">
+            <!-- Resumen de la agenda médica -->
+            <div class="card wide-card">
+                <h3 class="text-teal-800">Agenda Médica</h3>
+                <p>Resumen rápido de tus próximas actividades:</p>
+                <ul id="citas-lista">
+                    <!-- Aquí se llenarán las citas dinámicamente -->
+                </ul>
+            </div>
+            <!-- Acceso rápido a próximas citas -->
+            <div class="card">
+                <h3 class="text-teal-800">Próximas Citas</h3>
+                <ul id="proximas-citas-lista">
+                    <!-- Aquí se llenarán las próximas citas dinámicamente -->
+                </ul>
+            </div>
+            <!-- Notificaciones y recordatorios -->
+            <div class="card">
+                <h3 class="text-teal-800">Notificaciones y Recordatorios</h3>
+                <ul id="notificaciones-lista">
+                    <!-- Aquí se llenarán las notificaciones dinámicamente -->
+                </ul>
+            </div>
+            <!-- Gráficas de seguimiento de medicamentos -->
+            <div class="card wide-card">
+                <h3 class="text-teal-800">Seguimiento de Medicamentos</h3>
+                <p>A continuación se muestra el seguimiento de la ingesta de medicamentos:</p>
+                <canvas id="medicationChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('medicationChart').getContext('2d');
+        const medicationChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['20/05', '21/05', '22/05', '23/05', '24/05', '25/05', '26/05'],
+                datasets: [{
+                    label: 'Medicación A',
+                    data: [1, 1, 1, 1, 1, 0, 1],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true,
+                },
+                {
+                    label: 'Medicación B',
+                    data: [1, 1, 0, 1, 1, 1, 1],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    fill: true,
+                },
+                {
+                    label: 'Medicación C',
+                    data: [0, 1, 1, 1, 1, 1, 0],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Dosis tomada (1 = Sí, 0 = No)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Fecha'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Seguimiento de Medicación'
+                    }
+                }
+            }
+        });
+
+        // Función para cargar datos desde el archivo PHP usando AJAX
+        function cargarDatos() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "get_data.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    var citasLista = document.getElementById("citas-lista");
+                    var notificacionesLista = document.getElementById("notificaciones-lista");
+
+                    // Mostrar citas
+                    if (data.citas.length > 0) {
+                        data.citas.forEach(function (cita) {
+                            var li = document.createElement("li");
+                            li.textContent = "Consulta: " + cita.fecha_cita + " a las " + cita.hora_cita + " - Estado: " + cita.estado;
+                            citasLista.appendChild(li);
+                        });
+                    } else {
+                        citasLista.innerHTML = "<p>No tienes citas próximas.</p>";
+                    }
+
+                    // Mostrar notificaciones
+                    if (data.notificaciones.length > 0) {
+                        data.notificaciones.forEach(function (notificacion) {
+                            var li = document.createElement("li");
+                            li.textContent = notificacion.mensaje + " - " + notificacion.fecha_notificacion;
+                            notificacionesLista.appendChild(li);
+                        });
+                    } else {
+                        notificacionesLista.innerHTML = "<p>No tienes notificaciones.</p>";
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Cargar los datos cuando la página esté lista
+        window.onload = cargarDatos;
+    </script>
+
+</body>
+</html>

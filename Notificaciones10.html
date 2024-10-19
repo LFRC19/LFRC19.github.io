@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Notificaciones y Recordatorios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gradient-background {
+            background: linear-gradient(160deg, #00f260 0%, #0575e6 100%);
+        }
+        .dashboard {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            padding: 20px;
+            padding-left: 300px;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            flex: 1;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .card p, .card ul {
+            margin-bottom: 10px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #007bff;
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .sidebar img {
+            margin-right: 10px;
+        }
+        .sidebar .sidebar-header {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .sidebar .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar .sidebar-footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #007bff;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .notification {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .notification p {
+            flex: 1;
+            margin: 0;
+        }
+        .notification button {
+            margin-left: 10px;
+        }
+        .example-notification {
+            display: none;
+            padding: 20px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .example-notification.visible {
+            display: block;
+        }
+        .notification-icon {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        @media (max-width: 1024px) {
+            .dashboard {
+                padding-left: 20px;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar a {
+                display: inline-block;
+                padding: 10px;
+            }
+            .sidebar .sidebar-footer {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">Mi Agenda Mediconnect</div>
+        <nav>
+            <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
+            <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
+            <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
+            <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/appointment-scheduling.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
+            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Notificaciones10.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/alarm.png" class="inline-block w-6 h-6 mr-2"/>Notificaciones</a>
+            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>        
+    </div>
+    <!-- Main content -->
+    <div class="dashboard">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Sistema de Notificaciones y Recordatorios</h2>
+        <!-- Configuración de alertas para tomar medicamentos -->
+        <div class="card">
+            <h3 class="text-teal-800">Alertas de Medicamentos</h3>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/pill.png" class="notification-icon"/>
+                <p>Tomar medicamento A - 08:00 AM</p>
+                <button class="button" onclick="configureAlert('medicamento A', '08:00 AM')">Configurar</button>
+            </div>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/pill.png" class="notification-icon"/>
+                <p>Tomar medicamento B - 02:00 PM</p>
+                <button class="button" onclick="configureAlert('medicamento B', '02:00 PM')">Configurar</button>
+            </div>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/pill.png" class="notification-icon"/>
+                <p>Tomar medicamento C - 08:00 PM</p>
+                <button class="button" onclick="configureAlert('medicamento C', '08:00 PM')">Configurar</button>
+            </div>
+            <div class="example-notification" id="medication-example">
+                <p>Notificación configurada: Tomar medicamento a la hora establecida.</p>
+            </div>
+        </div>
+        <!-- Recordatorios de citas médicas -->
+        <div class="card">
+            <h3 class="text-teal-800">Recordatorios de Citas Médicas</h3>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/doctor-male.png" class="notification-icon"/>
+                <p>Consulta con el Dr. López - 20/05/2024</p>
+                <button class="button" onclick="setReminder('Dr. López', '20/05/2024')">Recordar</button>
+            </div>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/doctor-male.png" class="notification-icon"/>
+                <p>Consulta con el Dr. Pérez - 25/05/2024</p>
+                <button class="button" onclick="setReminder('Dr. Pérez', '25/05/2024')">Recordar</button>
+            </div>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/doctor-male.png" class="notification-icon"/>
+                <p>Consulta con el Dr. García - 30/05/2024</p>
+                <button class="button" onclick="setReminder('Dr. García', '30/05/2024')">Recordar</button>
+            </div>
+            <div class="example-notification" id="appointment-example">
+                <p>Recordatorio configurado: Consulta con el médico a la fecha establecida.</p>
+            </div>
+        </div>
+        <!-- Notificaciones sobre resultados de exámenes o mensajes del médico -->
+        <div class="card">
+            <h3 class="text-teal-800">Notificaciones de Resultados de Exámenes</h3>
+            <ul>
+                <li class="notification">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/test-results.png" class="notification-icon"/>
+                    <p>Examen de sangre - Resultados disponibles</p>
+                    <button class="button ml-2" onclick="viewResults('Examen de sangre')">Ver Resultados</button>
+                </li>
+                <li class="notification">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/test-results.png" class="notification-icon"/>
+                    <p>Biopsia de piel - Resultados disponibles</p>
+                    <button class="button ml-2" onclick="viewResults('Biopsia de piel')">Ver Resultados</button>
+                </li>
+                <li class="notification">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/test-results.png" class="notification-icon"/>
+                    <p>Radiografía de tórax - Resultados disponibles</p>
+                    <button class="button ml-2" onclick="viewResults('Radiografía de tórax')">Ver Resultados</button>
+                </li>
+            </ul>
+            <div class="example-notification" id="results-example">
+                <p>Notificación: Los resultados de su examen están disponibles.</p>
+            </div>
+        </div>
+        <!-- Integración con dispositivos -->
+        <div class="card">
+            <h3 class="text-teal-800">Integración con Dispositivos</h3>
+            <ul>
+                <li class="notification">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/google-home.png" class="notification-icon"/>
+                    <p>Google Home</p>
+                    <button class="button" onclick="integrateDevice('Google Home')">Conectar</button>
+                </li>
+                <li class="notification">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/amazon-alexa.png" class="notification-icon"/>
+                    <p>Amazon Alexa</p>
+                    <button class="button" onclick="integrateDevice('Amazon Alexa')">Conectar</button>
+                </li>
+                <li class="notification">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/apple-watch.png" class="notification-icon"/>
+                    <p>Apple Watch</p>
+                    <button class="button" onclick="integrateDevice('Apple Watch')">Conectar</button>
+                </li>
+                <li class="notification">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/smart-home.png" class="notification-icon"/>
+                    <p>Samsung SmartThings</p>
+                    <button class="button" onclick="integrateDevice('Samsung SmartThings')">Conectar</button>
+                </li>
+            </ul>
+            <div class="example-notification" id="device-example">
+                <p>Conexión establecida con el dispositivo seleccionado.</p>
+            </div>
+        </div>
+        <!-- Notificaciones de seguimiento de actividad física -->
+        <div class="card">
+            <h3 class="text-teal-800">Seguimiento de Actividad Física</h3>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/running.png" class="notification-icon"/>
+                <p>Actividad Física: Caminata matutina - 07:00 AM</p>
+                <button class="button" onclick="configureAlert('Caminata matutina', '07:00 AM')">Configurar</button>
+            </div>
+            <div class="notification">
+                <img src="https://img.icons8.com/ios-filled/50/000000/yoga.png" class="notification-icon"/>
+                <p>Actividad Física: Sesión de Yoga - 06:00 PM</p>
+                <button class="button" onclick="configureAlert('Sesión de Yoga', '06:00 PM')">Configurar</button>
+            </div>
+            <div class="example-notification" id="activity-example">
+                <p>Notificación configurada: Actividad física a la hora establecida.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function configureAlert(activity, time) {
+            alert(`Configurando alerta para ${activity} a las ${time}.`);
+            showExampleNotification('medication-example', `Alerta configurada para ${activity} a las ${time}.`);
+        }
+
+        function setReminder(doctor, date) {
+            alert(`Configurando recordatorio para consulta con ${doctor} el ${date}.`);
+            showExampleNotification('appointment-example', `Recordatorio configurado: Consulta con ${doctor} el ${date}.`);
+        }
+
+        function viewResults(test) {
+            alert(`Mostrando resultados de ${test}.`);
+            showExampleNotification('results-example', `Notificación: Los resultados de su ${test} están disponibles.`);
+        }
+
+        function integrateDevice(device) {
+            alert(`Conectando con ${device}.`);
+            showExampleNotification('device-example', `Conexión establecida con ${device}.`);
+        }
+
+        function showExampleNotification(exampleId, message) {
+            const example = document.getElementById(exampleId);
+            example.textContent = message;
+            example.classList.add('visible');
+            setTimeout(() => {
+                example.classList.remove('visible');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
+
+

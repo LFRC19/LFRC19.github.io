@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajería Instantánea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gradient-background {
+            background: linear-gradient(160deg, #00f260 0%, #0575e6 100%);
+        }
+        .dashboard {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            padding: 20px;
+            padding-left: 300px; /* Space for the sidebar */
+            padding-right: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card p, .card ul {
+            margin-bottom: 5px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #007bff;
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .sidebar .sidebar-header {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .sidebar .sidebar-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .sidebar .sidebar-footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: #007bff;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar .sidebar-footer a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        .chat-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: white;
+        }
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+        .chat-input input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            margin-right: 10px;
+        }
+        .chat-input button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .chat-input button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e9f5ff;
+        }
+        .message p {
+            margin: 0;
+        }
+        .message .sender {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .message .timestamp {
+            font-size: 0.8em;
+            color: #888;
+        }
+        .attachment-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .attachment-btn:hover {
+            background-color: #0056b3;
+        }
+        .chat-input .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        @media (max-width: 1024px) {
+            .dashboard {
+                padding-left: 20px; 
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar a {
+                display: inline-block;
+                padding: 10px;
+            }
+            .sidebar .sidebar-footer {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">Mi Agenda Mediconnect</div>
+<nav>
+    <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
+    <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
+    <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
+    <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
+    <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+    <a href="Notificaciones10.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/bell.png" class="inline-block w-6 h-6 mr-2"/>Notificaciones</a>
+    <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/chat.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
+    <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+</nav>
+<div class="sidebar-footer">
+    <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+</div>
+    </div>
+    <!-- Main content -->
+    <div class="dashboard">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Mensajería Instantánea</h2>
+        <!-- Chat en tiempo real -->
+        <div class="card">
+            <h3 class="text-teal-800">Chat en Tiempo Real</h3>
+            <div class="chat-container">
+                <div class="chat-header">Chat con el Dr. López</div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message">
+                        <p class="sender">Dr. López</p>
+                        <p>Hola, ¿cómo te sientes hoy?</p>
+                        <p class="timestamp">10:00 AM</p>
+                    </div>
+                    <div class="message">
+                        <p class="sender">Paciente</p>
+                        <p>Me siento mejor, gracias.</p>
+                        <p class="timestamp">10:02 AM</p>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Escribe un mensaje...">
+                    <button onclick="sendMessage()">Enviar</button>
+                    <div class="upload-btn-wrapper">
+                        <button class="attachment-btn">Adjuntar</button>
+                        <input type="file" name="file" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Historial de conversaciones -->
+        <div class="card">
+            <h3 class="text-teal-800">Historial de Conversaciones</h3>
+            <ul>
+                <li>Chat con el Dr. Pérez - 15/05/2024</li>
+                <li>Chat con el Dr. García - 12/05/2024</li>
+                <li>Chat con el Dr. López - 10/05/2024</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+
+            if (input.value.trim() !== '') {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.innerHTML = `
+                    <p class="sender">Paciente</p>
+                    <p>${input.value}</p>
+                    <p class="timestamp">${new Date().toLocaleTimeString()}</p>
+                `;
+                messages.appendChild(messageDiv);
+                input.value = '';
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+    </script>
+
+<script>
+    // Cargar mensajes del chat al cargar la página
+    $(document).ready(function() {
+        loadMessages();
+        
+        // Función para enviar un mensaje
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (message !== '') {
+                $.ajax({
+                    url: 'send_message.php',
+                    method: 'POST',
+                    data: {
+                        sender: 'Paciente',
+                        message: message
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        input.value = '';
+                        loadMessages(); // Recargar mensajes después de enviar
+                    }
+                });
+            }
+        }
+
+        // Función para cargar mensajes
+        function loadMessages() {
+            $.ajax({
+                url: 'get_messages.php',
+                method: 'GET',
+                success: function(response) {
+                    const messages = JSON.parse(response);
+                    const messagesContainer = document.getElementById('chat-messages');
+                    messagesContainer.innerHTML = '';
+                    messages.forEach(function(msg) {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.classList.add('message');
+                        messageDiv.innerHTML = `
+                            <p class="sender">${msg.sender}</p>
+                            <p>${msg.message}</p>
+                            <p class="timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</p>
+                        `;
+                        messagesContainer.appendChild(messageDiv);
+                    });
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            });
+        }
+
+        // Evento para enviar un mensaje cuando se presiona "Enviar"
+        document.querySelector('button[onclick="sendMessage()"]').addEventListener('click', sendMessage);
+    });
+</script>
+</body>
+</html>
+

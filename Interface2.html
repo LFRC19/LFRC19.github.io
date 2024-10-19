@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Usuario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .gradient-background {
+            background: linear-gradient(160deg, #00f260 0%, #0575e6 100%);
+        }
+        .dashboard {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            padding: 20px;
+            padding-left: 300px;
+            padding-right: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #007bff;
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s, color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            color: #ffeb3b;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .wide-card {
+            grid-column: span 2;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">Mi Agenda Mediconnect</div>
+        <nav>
+            <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
+            <a href="Interface2.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" class="inline-block w-6 h-6 mr-2"/>Mi Perfil</a>
+            <a href="Interface3.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial Médico</a>
+            <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Citas</a>
+            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a>
+            <a href="Notificaciones10.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/appointment-reminders.png" class="inline-block w-6 h-6 mr-2"/>Notificaciones</a>
+            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/speech.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
+            <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+        </div>        
+    </div>
+    <!-- Main content -->
+    <div class="dashboard">
+        <h2 class="text-3xl font-semibold mb-6 text-center text-teal-800">Perfil del Usuario</h2>
+        <div class="profile-header">
+            <img src="Mediconect/Interfaces/Recursos/Perfil.png" alt="Foto de perfil">
+            <div>
+                <h3 class="text-2xl font-semibold" id="nombre-usuario">Luis Fernando Rodriguez Cruz</h3>
+                <p class="text-teal-800">Usuario Activo</p>
+            </div>
+        </div>
+        <!-- Grid container for the cards -->
+        <div class="grid-container">
+            <!-- Información personal -->
+            <div class="card">
+                <h3 class="text-teal-800">Información Personal</h3>
+                <ul id="info-personal">
+                    <!-- Aquí se llenará la información personal del usuario -->
+                </ul>
+            </div>
+            <!-- Detalles de contacto -->
+            <div class="card">
+                <h3 class="text-teal-800">Detalles de Contacto</h3>
+                <ul id="detalles-contacto">
+                    <!-- Aquí se llenarán los detalles de contacto -->
+                </ul>
+            </div>
+            <!-- Preferencias de notificaciones -->
+            <div class="card">
+                <h3 class="text-teal-800">Preferencias de Notificaciones</h3>
+                <ul>
+                    <li>
+                        <label>
+                            <input type="checkbox" checked> Notificaciones por correo electrónico
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" checked> Notificaciones por SMS
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox"> Notificaciones push
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <!-- Información de seguros médicos -->
+            <div class="card">
+                <h3 class="text-teal-800">Información de Seguros Médicos</h3>
+                <ul id="info-seguros">
+                    <!-- Aquí se llenará la información de seguros -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para cargar los datos del perfil del usuario
+        function cargarPerfil() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "get_user_data.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+
+                    if (!data.error) {
+                        document.getElementById("nombre-usuario").textContent = data.nombre;
+
+                        // Información personal
+                        var infoPersonal = document.getElementById("info-personal");
+                        infoPersonal.innerHTML = `
+                            <li><strong>Nombre:</strong> ${data.nombre}</li>
+                            <li><strong>Fecha de Nacimiento:</strong> ${data.fecha_nacimiento}</li>
+                            <li><strong>Género:</strong> ${data.genero}</li>
+                        `;
+
+                        // Detalles de contacto
+                        var detallesContacto = document.getElementById("detalles-contacto");
+                        detallesContacto.innerHTML = `
+                            <li><strong>Correo Electrónico:</strong> ${data.correo}</li>
+                            <li><strong>Teléfono:</strong> ${data.telefono}</li>
+                            <li><strong>Dirección:</strong> ${data.direccion}</li>
+                        `;
+
+                        // Información de seguros
+                        var infoSeguros = document.getElementById("info-seguros");
+                        infoSeguros.innerHTML = `
+                            <li><strong>Aseguradora:</strong> ${data.aseguradora}</li>
+                            <li><strong>Número de Póliza:</strong> ${data.numero_poliza}</li>
+                            <li><strong>Fecha de Vencimiento:</strong> ${data.fecha_vencimiento}</li>
+                        `;
+                    } else {
+                        alert(data.error);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Cargar los datos cuando la página esté lista
+        window.onload = cargarPerfil;
+    </script>
+</body>
+</html>
