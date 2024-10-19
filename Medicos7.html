@@ -6,9 +6,7 @@
     <title>Panel de Administración para Médicos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -20,7 +18,7 @@
             background-color: #f4f4f4;
             min-height: 100vh;
             padding: 20px;
-            padding-left: 280px; /* Space for the sidebar */
+            padding-left: 280px;
             display: flex;
             flex-direction: column;
         }
@@ -36,9 +34,6 @@
             font-size: 1.5em;
             margin-bottom: 10px;
         }
-        .card p, .card ul {
-            margin-bottom: 5px;
-        }
         .card ul {
             list-style: none;
             padding: 0;
@@ -46,9 +41,6 @@
         .card ul li {
             padding: 10px 0;
             border-bottom: 1px solid #eee;
-        }
-        .card ul li:last-child {
-            border-bottom: none;
         }
         .sidebar {
             position: fixed;
@@ -116,15 +108,10 @@
             background-color: #0056b3;
             color: #ffeb3b;
         }
-        #datepicker {
-            width: 100%;
-            margin: 0 auto;
-        }
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            flex: 1;
         }
         .wide-card {
             grid-column: span 2;
@@ -156,7 +143,7 @@
                 display: inline-block;
                 padding: 10px;
             }
-            .sidebar .sidebar-footer {
+            .sidebar-footer {
                 position: static;
             }
             .grid-container {
@@ -173,12 +160,12 @@
             <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
             <a href="Interface4.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/calendar.png" class="inline-block w-6 h-6 mr-2"/>Gestión de Citas</a>
             <a href="HistorialPacientes.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/medical-history.png" class="inline-block w-6 h-6 mr-2"/>Historial de Pacientes</a>
-            <a href="PrescripcionRecetas.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Prescripción de Recetas</a>
-            <a href="Comunicacion.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/speech.png" class="inline-block w-6 h-6 mr-2"/>Comunicación</a>
+            <a href="PrescripcionRecetas.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/pill.png" class="inline-block w-6 h-6 mr-2"/>Prescripción de Recetas</a>
+            <a href="Comunicacion.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/chat.png" class="inline-block w-6 h-6 mr-2"/>Comunicación</a>
             <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
         </nav>
         <div class="sidebar-footer">
-            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+            <a href="index.html"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
         </div>        
     </div>
     <!-- Main content -->
@@ -189,153 +176,70 @@
             <!-- Gestión de citas y horarios -->
             <div class="card wide-card">
                 <h3 class="text-teal-800">Gestión de Citas y Horarios</h3>
-                <div id="datepicker"></div>
-                <ul>
-                    <li><strong>Próximas citas:</strong></li>
-                    <li><strong>Paciente:</strong> Diaz Berumen Maria de los Angeles - <strong>Fecha:</strong> 10/05/2024 - <strong>Hora:</strong> 10:00 AM</li>
-                    <li><strong>Paciente:</strong> Marquez Santillan Jose Eduardo - <strong>Fecha:</strong> 12/05/2024 - <strong>Hora:</strong> 10:00 AM</li>
-                    <li><strong>Paciente:</strong> Ortiz Garcia Nayeli - <strong>Fecha:</strong> 15/05/2024 - <strong>Hora:</strong> 10:00 AM</li>
-                    <li><strong>Paciente:</strong> Rodriguez Cruz Luis Fernando - <strong>Fecha:</strong> 18/05/2024 - <strong>Hora:</strong> 10:00 AM</li>
-                    <li><strong>Paciente:</strong> Rojo Chaidez Donovan - <strong>Fecha:</strong> 20/05/2024 - <strong>Hora:</strong> 10:00 AM</li>
-                </ul>
+                <ul id="citas-list"></ul>
             </div>
             <!-- Acceso al historial médico de los pacientes -->
             <div class="card">
                 <h3 class="text-teal-800">Historial Médico de Pacientes</h3>
-                <ul>
-                    <li><strong>Paciente:</strong> Diaz Berumen Maria de los Angeles - <strong>Consulta:</strong> 10/05/2024 - <strong>Diagnóstico:</strong> Gripe</li>
-                    <li><strong>Paciente:</strong> Marquez Santillan Jose Eduardo - <strong>Consulta:</strong> 12/05/2024 - <strong>Diagnóstico:</strong> Alergia</li>
-                    <li><strong>Paciente:</strong> Ortiz Garcia Nayeli - <strong>Consulta:</strong> 15/05/2024 - <strong>Diagnóstico:</strong> Asma</li>
-                    <li><strong>Paciente:</strong> Rodriguez Cruz Luis Fernando - <strong>Consulta:</strong> 18/05/2024 - <strong>Diagnóstico:</strong> Migraña</li>
-                    <li><strong>Paciente:</strong> Rojo Chaidez Donovan - <strong>Consulta:</strong> 20/05/2024 - <strong>Diagnóstico:</strong> Hipertensión</li>
-                </ul>
-                <ul>
-                    <li><strong>Paciente:</strong> Lara Gomez Ana Maria - <strong>Consulta:</strong> 22/05/2024 - <strong>Diagnóstico:</strong> Diabetes</li>
-                    <li><strong>Paciente:</strong> Hernandez Lopez Pedro - <strong>Consulta:</strong> 25/05/2024 - <strong>Diagnóstico:</strong> Hipertensión</li>
-                    <li><strong>Paciente:</strong> Martinez Perez Juan - <strong>Consulta:</strong> 28/05/2024 - <strong>Diagnóstico:</strong> Asma</li>
-                    <li><strong>Paciente:</strong> Sanchez Rodriguez Luis - <strong>Consulta:</strong> 30/05/2024 - <strong>Diagnóstico:</strong> Migraña</li>
-                </ul>
+                <ul id="historial-list"></ul>
             </div>
             <!-- Prescripción de recetas electrónicas -->
             <div class="card">
                 <h3 class="text-teal-800">Prescripción de Recetas Electrónicas</h3>
-                <ul>
-                    <li>
-                        <div class="info-item"><strong>Paciente:</strong> <span>Diaz Berumen Maria de los Angeles</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Amoxicilina 500mg</span></div>
-                        <button class="button mt-2">Prescribir</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Marquez Santillan Jose Eduardo</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Loratadina 10mg</span></div>
-                        <button class="button mt-2">Prescribir</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Ortiz Garcia Nayeli</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Salbutamol 100mcg</span></div>
-                        <button class="button mt-2">Prescribir</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Rodriguez Cruz Luis Fernando</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Paracetamol 500mg</span></div>
-                        <button class="button mt-2">Prescribir</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Rojo Chaidez Donovan</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Losartan 50mg</span></div>
-                        <button class="button mt-2">Prescribir</button>
-                    </li>
-                </ul>
+                <ul id="recetas-list"></ul>
             </div>
             <!-- Comunicación directa con los pacientes -->
             <div class="card">
                 <h3 class="text-teal-800">Comunicación Directa con Pacientes</h3>
-                <ul>
-                    <li>Chat con Diaz Berumen Maria de los Angeles</li>
-                    <li>Chat con Marquez Santillan Jose Eduardo</li>
-                    <li>Chat con Ortiz Garcia Nayeli</li>
-                    <li>Chat con Rodriguez Cruz Luis Fernando</li>
-                    <li>Chat con Rojo Chaidez Donovan</li>
-                    <li>Chat con Lara Gomez Ana Maria</li>
-                    <li>Chat con Hernandez Lopez Pedro</li>
-                    <li>Chat con Martinez Perez Juan</li>
-                    <li>Chat con Sanchez Rodriguez Luis</li>
-                </ul>
+                <ul id="comunicacion-list"></ul>
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            $("#datepicker").datepicker();
-        });
-    </script>
 
 <script>
-    // Cargar próximas citas
-    $(document).ready(function() {
-        $.ajax({
-            url: 'get_citas.php',
-            method: 'GET',
-            success: function(response) {
-                let citas = JSON.parse(response);
-                let citasHtml = '';
-                citas.forEach(function(cita) {
-                    citasHtml += `<li><strong>Paciente:</strong> ${cita.paciente} - <strong>Fecha:</strong> ${cita.fecha} - <strong>Hora:</strong> ${cita.hora}</li>`;
-                });
-                $('#citas-list').html(citasHtml);
-            }
-        });
+    // Función para cargar datos ficticios de citas, historial médico, recetas y comunicación
+    async function cargarDatos() {
+        const response = await fetch('https://randomuser.me/api/?results=5');
+        const data = await response.json();
 
-        // Cargar historial médico
-        $.ajax({
-            url: 'get_historial_medico.php',
-            method: 'GET',
-            success: function(response) {
-                let historial = JSON.parse(response);
-                let historialHtml = '';
-                historial.forEach(function(h) {
-                    historialHtml += `<li><strong>Paciente:</strong> ${h.paciente} - <strong>Consulta:</strong> ${h.fecha} - <strong>Diagnóstico:</strong> ${h.diagnostico}</li>`;
-                });
-                $('#historial-list').html(historialHtml);
-            }
-        });
+        const citasList = document.getElementById('citas-list');
+        const historialList = document.getElementById('historial-list');
+        const recetasList = document.getElementById('recetas-list');
+        const comunicacionList = document.getElementById('comunicacion-list');
 
-        // Cargar recetas electrónicas
-        $.ajax({
-            url: 'get_recetas.php',
-            method: 'GET',
-            success: function(response) {
-                let recetas = JSON.parse(response);
-                let recetasHtml = '';
-                recetas.forEach(function(receta) {
-                    recetasHtml += `<li><strong>Paciente:</strong> ${receta.paciente} - <strong>Medicamento:</strong> ${receta.medicamento}</li>`;
-                });
-                $('#recetas-list').html(recetasHtml);
-            }
-        });
+        const medicamentos = ['Ibuprofeno 400mg', 'Amoxicilina 500mg', 'Loratadina 10mg', 'Paracetamol 500mg', 'Losartan 50mg'];
+        const horas = ['09:00 AM', '10:30 AM', '11:00 AM', '12:00 PM', '01:30 PM'];
 
-        // Cargar chats con pacientes
-        $.ajax({
-            url: 'get_comunicacion.php',
-            method: 'GET',
-            success: function(response) {
-                let comunicacion = JSON.parse(response);
-                let comunicacionHtml = '';
-                comunicacion.forEach(function(c) {
-                    comunicacionHtml += `<li>Chat con ${c.paciente}</li>`;
-                });
-                $('#comunicacion-list').html(comunicacionHtml);
-            }
+        data.results.forEach((usuario, index) => {
+            const fechaCita = new Date();
+            fechaCita.setDate(fechaCita.getDate() + (index + 1) * 2); // Fechas variadas
+            
+            // Cargar citas
+            const cita = document.createElement('li');
+            cita.innerHTML = `<strong>Paciente:</strong> ${usuario.name.first} ${usuario.name.last} - <strong>Fecha:</strong> ${fechaCita.toLocaleDateString()} - <strong>Hora:</strong> ${horas[index]}`;
+            citasList.appendChild(cita);
+
+            // Cargar historial médico
+            const historial = document.createElement('li');
+            historial.innerHTML = `<strong>Paciente:</strong> ${usuario.name.first} ${usuario.name.last} - <strong>Consulta:</strong> ${fechaCita.toLocaleDateString()} - <strong>Diagnóstico:</strong> ${index % 2 === 0 ? 'Gripe' : 'Alergia'}`;
+            historialList.appendChild(historial);
+
+            // Cargar recetas
+            const receta = document.createElement('li');
+            receta.innerHTML = `<strong>Paciente:</strong> ${usuario.name.first} ${usuario.name.last} - <strong>Medicamento:</strong> ${medicamentos[index]}`;
+            recetasList.appendChild(receta);
+
+            // Cargar comunicación
+            const chat = document.createElement('li');
+            chat.textContent = `Chat con ${usuario.name.first} ${usuario.name.last}`;
+            comunicacionList.appendChild(chat);
         });
-    });
+    }
+
+    // Llamar a la función cuando la página esté lista
+    window.onload = cargarDatos;
 </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
