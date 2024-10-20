@@ -17,7 +17,7 @@
             background-color: #f4f4f4;
             min-height: 100vh;
             padding: 20px;
-            padding-left: 300px; /* Space for the sidebar */
+            padding-left: 300px;
             padding-right: 20px;
         }
         .card {
@@ -186,13 +186,13 @@
         <div class="sidebar-header">Panel de Farmacia</div>
         <nav>
             <a href="Interface1.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="inline-block w-6 h-6 mr-2"/>Inicio</a>
-            <a href="GestionRecetas.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/prescription.png" class="inline-block w-6 h-6 mr-2"/>Gestión de Recetas</a>
-            <a href="Inventarios.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/inventory.png" class="inline-block w-6 h-6 mr-2"/>Inventarios</a>
-            <a href="Comunicacion.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/chat.png" class="inline-block w-6 h-6 mr-2"/>Comunicación</a>
+            <a href="Interface5.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/pill.png" class="inline-block w-6 h-6 mr-2"/>Recetas</a> <!-- Imagen cambiada -->
+            <a href="Inventarios.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/warehouse.png" class="inline-block w-6 h-6 mr-2"/>Inventarios</a>            
+            <a href="Mensajeria8.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/sms.png" class="inline-block w-6 h-6 mr-2"/>Mensajería</a>
             <a href="Interface6.html"><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="inline-block w-6 h-6 mr-2"/>Configuración</a>
         </nav>
         <div class="sidebar-footer">
-            <a href="Log-in.htm"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
+            <a href="index.html"><img src="https://img.icons8.com/ios-filled/50/007bff/logout-rounded.png" class="inline-block w-6 h-6 mr-2"/>Cerrar Sesión</a>
         </div>        
     </div>
     <!-- Main content -->
@@ -203,119 +203,22 @@
             <!-- Recepción y gestión de recetas electrónicas -->
             <div class="card">
                 <h3 class="text-teal-800">Recepción y Gestión de Recetas Electrónicas</h3>
-                <ul>
-                    <li>
-                        <div class="info-item"><strong>Receta de:</strong> <span>Diaz Berumen Maria de los Angeles</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Amoxicilina 500mg</span></div>
-                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>20/05/2024</span></div>
-                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. López</span></div>
-                        <button class="button mt-2">Procesar</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Receta de:</strong> <span>Marquez Santillan Jose Eduardo</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Loratadina 10mg</span></div>
-                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>21/05/2024</span></div>
-                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. Pérez</span></div>
-                        <button class="button mt-2">Procesar</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Receta de:</strong> <span>Ortiz Garcia Nayeli</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Salbutamol 100mcg</span></div>
-                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>22/05/2024</span></div>
-                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. García</span></div>
-                        <button class="button mt-2">Procesar</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Receta de:</strong> <span>Rodriguez Cruz Luis Fernando</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Paracetamol 500mg</span></div>
-                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>23/05/2024</span></div>
-                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. Hernández</span></div>
-                        <button class="button mt-2">Procesar</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Receta de:</strong> <span>Rojo Chaidez Donovan</span></div>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Losartan 50mg</span></div>
-                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>24/05/2024</span></div>
-                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. Fernández</span></div>
-                        <button class="button mt-2">Procesar</button>
-                    </li>
+                <ul id="recetas-list">
+                    <!-- Aquí se cargarán las recetas electrónicas -->
                 </ul>
             </div>
             <!-- Actualización de inventarios -->
             <div class="card">
                 <h3 class="text-teal-800">Actualización de Inventarios</h3>
-                <ul>
-                    <li>
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Amoxicilina 500mg</span></div>
-                        <div class="info-item"><strong>Stock Actual:</strong> <span>120 unidades</span></div>
-                        <div class="input-wrapper">
-                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
-                            <button class="button mt-2">Actualizar</button>
-                        </div>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Loratadina 10mg</span></div>
-                        <div class="info-item"><strong>Stock Actual:</strong> <span>80 unidades</span></div>
-                        <div class="input-wrapper">
-                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
-                            <button class="button mt-2">Actualizar</button>
-                        </div>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Salbutamol 100mcg</span></div>
-                        <div class="info-item"><strong>Stock Actual:</strong> <span>50 unidades</span></div>
-                        <div class="input-wrapper">
-                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
-                            <button class="button mt-2">Actualizar</button>
-                        </div>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Paracetamol 500mg</span></div>
-                        <div class="info-item"><strong>Stock Actual:</strong> <span>200 unidades</span></div>
-                        <div class="input-wrapper">
-                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
-                            <button class="button mt-2">Actualizar</button>
-                        </div>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Medicamento:</strong> <span>Losartan 50mg</span></div>
-                        <div class="info-item"><strong>Stock Actual:</strong> <span>60 unidades</span></div>
-                        <div class="input-wrapper">
-                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
-                            <button class="button mt-2">Actualizar</button>
-                        </div>
-                    </li>
+                <ul id="inventario-list">
+                    <!-- Aquí se cargarán los datos del inventario -->
                 </ul>
             </div>
-            <!-- Comunicación con pacientes para la entrega de medicamentos -->
+            <!-- Comunicación con pacientes -->
             <div class="card wide-card">
                 <h3 class="text-teal-800">Comunicación con Pacientes</h3>
-                <ul>
-                    <li>
-                        <div class="info-item"><strong>Paciente:</strong> <span>Diaz Berumen Maria de los Angeles</span></div>
-                        <div class="info-item"><strong>Último Contacto:</strong> <span>20/05/2024</span></div>
-                        <button class="button mt-2">Iniciar Chat</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Marquez Santillan Jose Eduardo</span></div>
-                        <div class="info-item"><strong>Último Contacto:</strong> <span>21/05/2024</span></div>
-                        <button class="button mt-2">Iniciar Chat</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Ortiz Garcia Nayeli</span></div>
-                        <div class="info-item"><strong>Último Contacto:</strong> <span>22/05/2024</span></div>
-                        <button class="button mt-2">Iniciar Chat</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Rodriguez Cruz Luis Fernando</span></div>
-                        <div class="info-item"><strong>Último Contacto:</strong> <span>23/05/2024</span></div>
-                        <button class="button mt-2">Iniciar Chat</button>
-                    </li>
-                    <li class="mt-4">
-                        <div class="info-item"><strong>Paciente:</strong> <span>Rojo Chaidez Donovan</span></div>
-                        <div class="info-item"><strong>Último Contacto:</strong> <span>24/05/2024</span></div>
-                        <button class="button mt-2">Iniciar Chat</button>
-                    </li>
+                <ul id="comunicacion-list">
+                    <!-- Aquí se cargarán las opciones de comunicación con los pacientes -->
                 </ul>
             </div>
             <!-- Sección de estadísticas -->
@@ -327,8 +230,51 @@
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Cargar datos ficticios usando RandomUser API
+        async function cargarDatos() {
+            const response = await fetch('https://randomuser.me/api/?results=5');
+            const data = await response.json();
+
+            const recetasList = document.getElementById('recetas-list');
+            const inventarioList = document.getElementById('inventario-list');
+            const comunicacionList = document.getElementById('comunicacion-list');
+
+            data.results.forEach((usuario, index) => {
+                const recetaHtml = `
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Receta de:</strong> <span>${usuario.name.first} ${usuario.name.last}</span></div>
+                        <div class="info-item"><strong>Medicamento:</strong> <span>${index % 2 === 0 ? 'Amoxicilina 500mg' : 'Loratadina 10mg'}</span></div>
+                        <div class="info-item"><strong>Fecha de emisión:</strong> <span>${new Date().toLocaleDateString()}</span></div>
+                        <div class="info-item"><strong>Doctor:</strong> <span>Dr. ${usuario.name.first}</span></div>
+                        <button class="button mt-2">Procesar</button>
+                    </li>`;
+                recetasList.insertAdjacentHTML('beforeend', recetaHtml);
+
+                const inventarioHtml = `
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Medicamento:</strong> <span>${index % 2 === 0 ? 'Amoxicilina 500mg' : 'Loratadina 10mg'}</span></div>
+                        <div class="info-item"><strong>Stock Actual:</strong> <span>${Math.floor(Math.random() * 200)} unidades</span></div>
+                        <div class="input-wrapper">
+                            <input type="number" placeholder="Cantidad a añadir" class="p-2 border rounded w-full">
+                            <button class="button mt-2">Actualizar</button>
+                        </div>
+                    </li>`;
+                inventarioList.insertAdjacentHTML('beforeend', inventarioHtml);
+
+                const comunicacionHtml = `
+                    <li class="mt-4">
+                        <div class="info-item"><strong>Paciente:</strong> <span>${usuario.name.first} ${usuario.name.last}</span></div>
+                        <div class="info-item"><strong>Último Contacto:</strong> <span>${new Date().toLocaleDateString()}</span></div>
+                        <button class="button mt-2">Iniciar Chat</button>
+                    </li>`;
+                comunicacionList.insertAdjacentHTML('beforeend', comunicacionHtml);
+            });
+        }
+
+        // Inicializar gráfico de inventario
         document.addEventListener('DOMContentLoaded', function() {
             var ctx = document.getElementById('inventoryChart').getContext('2d');
             var inventoryChart = new Chart(ctx, {
@@ -363,6 +309,9 @@
                     }
                 }
             });
+
+            // Cargar datos cuando la página esté lista
+            cargarDatos();
         });
     </script>
 </body>
