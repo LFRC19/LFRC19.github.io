@@ -1,151 +1,771 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión | MediConnect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        .login-header {
-            margin-bottom: 20px;
-        }
-        .login-header h2 {
-            font-size: 2.5em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .login-header p {
-            color: #666;
-        }
-        .login-header img {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 20px auto;
-        }
-        .login-form input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-size: 1em;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .login-form .btn {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 10px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .login-form .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .login-form .btn-primary:hover {
-            background-color: #0056b3;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .login-form .btn-secondary {
-            background-color: #e0e0e0;
-            color: #333;
-        }
-        .login-form .btn-secondary:hover {
-            background-color: #c0c0c0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .login-form .social-login {
-            display: flex;
-            justify-content: space-between;
-        }
-        .login-form .social-login .btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 5px;
-            padding: 10px;
-        }
-        .login-form .social-login .btn svg {
-            margin-right: 10px;
-        }
-        .login-footer {
-            margin-top: 20px;
-        }
-        .login-footer a {
-            color: #007bff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .login-footer a:hover {
-            color: #0056b3;
-        }
-        .text-sm {
-            font-size: 0.875rem;
-        }
-        .text-blue-500 {
-            color: #007bff;
-        }
-        .text-blue-800 {
-            color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediConnect Salud Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </head>
-<body>
-    <div class="login-container">
-        <div class="login-header">
-            <img src="https://img.icons8.com/ios-filled/50/007bff/user.png" alt="Logo">
-            <h2>MediConnect</h2>
-            <p>¡Bienvenido! Por favor, ingresa tus datos para iniciar sesión</p>
-        </div>
-        <div class="login-form">
-            <input type="text" placeholder="Usuario o Correo" id="username">
-            <input type="password" placeholder="Contraseña" id="password">
-            <a href="#" class="text-sm text-blue-500 hover:text-blue-800">¿Olvidó su contraseña?</a>
-            <button class="btn btn-primary" type="button" onclick="login()">Entrar</button>
-            <div class="social-login">
-                <button class="btn btn-secondary" onclick="window.location.href='/auth/google'">
-                    <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google">
-                    Google
-                </button>
-                <button class="btn btn-secondary" onclick="window.location.href='/auth/facebook'">
-                    <img src="https://img.icons8.com/color/24/000000/facebook-new.png" alt="Facebook">
-                    Facebook
-                </button>
-            </div>
-        </div>
-        <div class="login-footer">
-            <p class="text-sm">¿No tiene una cuenta? <a href="#">Regístrate</a></p>
-            <p class="text-sm">¿Necesita ayuda técnica? <a href="#">Soporte</a></p>
-        </div>
+<body class="bg-gray-50 font-sans">
+  <!-- Encabezado -->
+  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-blue-600">MediConnect</a>
+      <nav class="space-x-6">
+        <a href="#" class="text-gray-700 hover:text-blue-600">Soluciones</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600">Funcionalidades</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600">Precios</a>
+        <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Prueba Gratis</button>
+      </nav>
+      <div>
+        <a href="login.html" class="text-gray-700 hover:text-blue-600">Ir a mi cuenta</a>
+      </div>
     </div>
-    <script>
-        function login() {
-            // Funcionalidad de redireccionamiento después del login exitoso
-            window.location.href = "Interface1.html";  // Redirige a la página de inicio
-        }
-    </script>
+  </header>
+
+  <!-- Agregar un margen superior para evitar que el contenido se solape con el encabezado -->
+  <div class="pt-24"></div>
+
+<!-- Sección de introducción mejorada con animación de aparición -->
+<section id="intro-section" class="bg-blue-50 py-16 opacity-0 transition-opacity duration-2000 ease-out">
+    <div class="container mx-auto flex flex-col md:flex-row items-center">
+      <!-- Texto -->
+      <div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+        <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
+          El software de agenda médica que busca ser <span class="text-blue-600">#1 en México</span>
+        </h1>
+        <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+          Únete a la digitalización y automatización de su centro de salud. ¡Empieza hoy mismo!
+        </p>
+        <button class="mt-8 bg-blue-600 text-white py-3 px-8 rounded-full text-lg hover:bg-blue-700 hover:shadow-lg transition duration-300 ease-in-out">
+          Prueba Gratis
+        </button>
+      </div>
+      <!-- Imagen -->
+      <div class="w-full md:w-1/2 flex justify-center">
+        <img src="Recursos/mockuper.png" alt="Vista previa de MediConnect" class="rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    // Espera a que todo el contenido de la página se cargue
+    window.addEventListener('load', function() {
+      // Selecciona la sección y añade la clase que activa la transición
+      const introSection = document.getElementById('intro-section');
+      introSection.style.opacity = '1';
+    });
+  </script>
+  
+
+  
+ 
+  <!-- Sección de funcionalidades mejorada -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto text-center">
+          <!-- Titulo en azul-->
+        <p class="text-base font-bold uppercase text-[#2563EB]">
+            Tenemos todo lo que necesitas para digitalizar tu negocio
+        </p>
+      <h2 class="text-3xl font-extrabold text-gray-900">Lleva el control total de tu centro médico en una app</h2>
+      <p class="mt-4 text-lg text-gray-600">Simplifica la gestión de tu consulta médica desde la programación de citas hasta el seguimiento de fichas clínicas.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+        <div class="p-6 bg-white rounded-lg shadow-lg">
+          <div class="flex justify-center mb-4">
+            <img src="Recursos/AgendaMedica.png" alt="Agenda médica online" class="w-12 h-12">
+          </div>
+          <h3 class="text-xl font-semibold text-blue-600">Agenda médica online</h3>
+          <p class="mt-4 text-gray-600">Facilita el programar citas en cualquier momento, los 7 días de la semana.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-lg">
+          <div class="flex justify-center mb-4">
+            <img src="Recursos/FichaMedica.png" alt="Fichas clínicas para pacientes" class="w-12 h-12">
+          </div>
+          <h3 class="text-xl font-semibold text-blue-600">Fichas clínicas para pacientes</h3>
+          <p class="mt-4 text-gray-600">Explora el historial y seguimiento de tus pacientes con un simple clic.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-lg">
+          <div class="flex justify-center mb-4">
+            <img src="Recursos/Compensation.png" alt="Sistema de compensación" class="w-12 h-12">
+          </div>
+          <h3 class="text-xl font-semibold text-blue-600">Sistema de compensación por ventas</h3>
+          <p class="mt-4 text-gray-600">Establece comisiones personalizadas para cada profesional o servicio.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-lg">
+          <div class="flex justify-center mb-4">
+            <img src="Recursos/Notificacion.png" alt="Automatización de recordatorios" class="w-12 h-12">
+          </div>
+          <h3 class="text-xl font-semibold text-blue-600">Automatización de recordatorios</h3>
+          <p class="mt-4 text-gray-600">Minimiza ausencias y cancelaciones, optimiza tu tiempo y ganancias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+<!-- Sección de Servicios Personalizados -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div class="space-y-4">
+        <h2 class="text-3xl font-extrabold text-gray-900">Te ofrecemos la mejor solución digital para tu salud</h2>
+        <p class="text-lg text-gray-700">
+          Con MediConnect, tanto los profesionales de la salud como los pacientes pueden gestionar y optimizar su experiencia médica de manera eficiente y segura. Descubre cómo nuestra plataforma puede mejorar la atención, el seguimiento y la gestión de tus tratamientos.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-xl font-semibold text-blue-600">Para Profesionales de la Salud</h3>
+        <ul class="list-disc list-inside text-gray-700">
+          <li>Agenda médica versátil, accesible 24/7.</li>
+          <li>Seguimiento integral de historiales médicos.</li>
+          <li>Automatización de recordatorios personalizados.</li>
+          <li>Mejor coordinación entre equipos de salud.</li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-xl font-semibold text-blue-600">Para Pacientes</h3>
+        <ul class="list-disc list-inside text-gray-700">
+          <li>Acceso fácil y rápido a tu historial médico.</li>
+          <li>Recordatorios automáticos para tus citas y medicamentos.</li>
+          <li>Interacción directa con tu médico a través de la plataforma.</li>
+          <li>Notificaciones personalizadas para un mejor seguimiento.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Sección de Accesibilidad y Gestión Médica -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Texto -->
+      <div>
+        <h2 class="text-4xl font-extrabold text-gray-900">Lleva tu agenda médica a donde vayas</h2>
+        <p class="mt-4 text-lg text-gray-700">
+          Con MediConnect, tienes el control de tu centro médico o farmacia desde cualquier dispositivo conectado a internet. 
+          Olvídate de los métodos tradicionales y digitaliza todos tus procesos, permitiendo que tanto profesionales como pacientes 
+          disfruten de una mejor experiencia.
+        </p>
+        <ul class="mt-6 space-y-4 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Gestiona las citas médicas con solo un clic, en cualquier momento y lugar.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Crea y consulta historias clínicas digitales de forma fácil y rápida.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Configura recordatorios automáticos para citas y medicamentos, evitando olvidos.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Supervisa el estado financiero de tu centro o farmacia y genera reportes detallados.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Administra tu inventario en tiempo real para evitar faltantes de productos esenciales.</span>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Imagen del móvil con efecto hover -->
+      <div class="flex justify-center">
+        <img src="Recursos/Movil1.png" alt="MediConnect app en un móvil" class="w-full lg:w-3/4 transform transition duration-300 ease-in-out hover:scale-110 hover:shadow-lg rounded-lg">
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="py-16 bg-white">
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Imagen del móvil con efecto hover -->
+      <div class="flex justify-center">
+        <img src="Recursos/Movil2.png" alt="MediConnect app en un móvil" class="w-full lg:w-3/4 transform transition duration-500 hover:scale-110">
+      </div>
+  
+      <!-- Texto -->
+      <div>
+        <h2 class="text-4xl font-extrabold text-gray-900">Organiza de forma eficaz la información de tus pacientes y farmacias</h2>
+        <p class="mt-4 text-lg text-gray-700">
+          Con MediConnect, puedes gestionar la información de tus pacientes y farmacias de manera centralizada y eficiente. Nuestra solución te permite acceder a historiales clínicos y de inventario de forma rápida y segura, mejorando tanto la atención médica como el control farmacéutico.
+        </p>
+        <ul class="mt-6 space-y-4 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Accede rápidamente a los historiales clínicos y farmacéuticos desde cualquier dispositivo.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Configura recordatorios automáticos para citas médicas y control de inventario.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Supervisa en tiempo real el estado financiero y los productos esenciales de tu centro de salud.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Personaliza las notificaciones para mantener el contacto con tus pacientes y mejorar su adherencia al tratamiento.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Texto -->
+      <div>
+        <h2 class="text-4xl font-extrabold text-gray-900">Automatiza los recordatorios de citas y medicamentos</h2>
+        <p class="mt-4 text-lg text-gray-700">
+          MediConnect te permite enviar recordatorios automáticos para citas médicas y la toma de medicamentos. Puedes configurar notificaciones flexibles que se envían uno, dos o tres días antes de la cita o la dosis, y elegir el canal de envío que prefieras: email, SMS, WhatsApp, entre otros.
+        </p>
+        <ul class="mt-6 space-y-4 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Elige entre diferentes canales para enviar recordatorios: Email, SMS, WhatsApp, y más.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Aumenta la tasa de asistencia a las citas médicas y la adherencia a los tratamientos con recordatorios oportunos.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Reduce las ausencias y mejora la satisfacción del paciente con una atención personalizada.</span>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Imagen del móvil con efecto hover -->
+      <div class="flex justify-center">
+        <img src="Recursos/Movil3.png" alt="Recordatorios automáticos en MediConnect" class="w-full lg:w-3/4 transform transition duration-500 hover:scale-110">
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="py-16 bg-white">
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Imagen del sistema -->
+      <div class="flex justify-center">
+        <img src="Recursos/Movil4.png" alt="Gestión del centro médico en MediConnect" class="w-full lg:w-3/4 transform transition duration-500 hover:scale-110">
+      </div>
+  
+      <!-- Texto -->
+      <div>
+        <h2 class="text-4xl font-extrabold text-gray-900">Empodera la gestión de tu centro médico o farmacia</h2>
+        <p class="mt-4 text-lg text-gray-700">
+          MediConnect ofrece una amplia gama de herramientas para gestionar citas, pacientes y las operaciones diarias de tu centro de salud o farmacia. Digitaliza y automatiza tus procesos para mejorar la eficiencia y permitir que los profesionales se enfoquen en lo que realmente importa: el cuidado de los pacientes.
+        </p>
+        <ul class="mt-6 space-y-4 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Gestión completa de citas y flujos de trabajo desde cualquier dispositivo.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Optimiza el control financiero con reportes en tiempo real.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Mejora la relación con tus pacientes gracias a la personalización de servicios.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  <section class="py-16 bg-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-6">Somos el sistema de agendamiento más completo que hay</h2>
+      <p class="text-lg text-gray-700 mb-8">
+        Con MediConnect, tienes acceso a la solución integral que ofrece herramientas para la gestión de citas, historiales médicos, notificaciones, y la integración con farmacias. Potenciamos la eficiencia de tu centro médico o farmacia, brindando un control total en tiempo real.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+          <thead>
+            <tr class="bg-blue-600 text-white text-left">
+              <th class="py-4 px-6">Funcionalidad</th>
+              <th class="py-4 px-6">MediConnect</th>
+              <th class="py-4 px-6">Otros</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Web de reservas para agendar citas por internet</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Personalización de la plataforma para asociarla a tu marca</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Facilidad de pagos en línea (parciales o totales)</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Historiales médicos digitalizados y organizados</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Firma digital para documentos y recetas</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Configuración de notificaciones automáticas</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Protección y almacenamiento seguro de datos</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 border-b border-gray-200">Historial de recetas y renovaciones electrónicas</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✔</td>
+              <td class="py-4 px-6 border-b border-gray-200 text-center">✘</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-8 text-lg text-gray-700">
+        MediConnect también ofrece una integración única con farmacias y la posibilidad de administrar inventarios, generar reportes financieros, y enviar notificaciones automáticas, asegurando que tanto profesionales como pacientes reciban el mejor servicio.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-6">Otras funcionalidades que encontrarás en MediConnect</h2>
+      <p class="text-lg text-gray-700 mb-8">Ofrecemos todo lo necesario para la digitalización completa de tu centro médico o farmacia.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <img src="https://cdn-icons-png.flaticon.com/512/2331/2331948.png" alt="Icono de control de caja" class="w-12 h-12 mx-auto mb-4" style="filter: grayscale(100%);">
+          <h3 class="text-xl font-bold text-blue-600">Control de caja</h3>
+          <p class="mt-4 text-gray-600">Revisa el estado de tus finanzas en tiempo real y evita errores en la gestión de tu centro médico o farmacia.</p>
+          <a href="#" class="mt-4 text-blue-600 font-semibold hover:underline">Saber más →</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <img src="https://cdn-icons-png.flaticon.com/512/929/929426.png" alt="Icono de cálculo de comisiones" class="w-12 h-12 mx-auto mb-4" style="filter: grayscale(100%);">
+          <h3 class="text-xl font-bold text-blue-600">Cálculo de comisiones</h3>
+          <p class="mt-4 text-gray-600">Configura comisiones personalizadas para cada profesional y genera reportes financieros con un clic.</p>
+          <a href="#" class="mt-4 text-blue-600 font-semibold hover:underline">Saber más →</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <img src="https://cdn-icons-png.flaticon.com/512/2235/2235790.png" alt="Icono de reportes" class="w-12 h-12 mx-auto mb-4" style="filter: grayscale(100%);">
+          <h3 class="text-xl font-bold text-blue-600">Reportes de gestión</h3>
+          <p class="mt-4 text-gray-600">Diseña planes estratégicos basados en reportes detallados, optimizando tus operaciones diarias.</p>
+          <a href="#" class="mt-4 text-blue-600 font-semibold hover:underline">Saber más →</a>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <img src="https://cdn-icons-png.flaticon.com/512/1087/1087815.png" alt="Icono de marketing" class="w-12 h-12 mx-auto mb-4" style="filter: grayscale(100%);">
+          <h3 class="text-xl font-bold text-blue-600">Marketing y fidelización</h3>
+          <p class="mt-4 text-gray-600">Utiliza herramientas de marketing para atraer nuevos pacientes y fidelizar a los existentes.</p>
+          <a href="#" class="mt-4 text-blue-600 font-semibold hover:underline">Saber más →</a>
+        </div>
+      </div>
+    </div>
+    
+    
+  
+    <!-- Testimonios -->
+    <div class="mt-16 px-6 lg:px-16">
+      <h3 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">Lo que dicen los expertos sobre MediConnect</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <p class="text-lg text-gray-700">“MediConnect tiene lo que se necesita en el ambito medico para actualizar el obsoleto sistema de recetas en México.”</p>
+          <p class="mt-4 text-blue-600 font-bold">Claudia Loreto</p>
+          <p class="text-gray-500">Jefa de Departamento Sistemas y Computacion</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <p class="text-lg text-gray-700">“Es el proyecto mas ambicioso visto en el Inovatec 2024”</p>
+          <p class="mt-4 text-blue-600 font-bold">Desconocido</p>
+          <p class="text-gray-500">Juez de concurso Innovatec</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <p class="text-lg text-gray-700"></p>
+          <p class="mt-4 text-blue-600 font-bold"></p>
+          <p class="text-gray-500"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16" style="background-color: #ffffff;">
+    <div class="container mx-auto px-6" style="background-color: #2563EB;">
+      <div class="bg-white rounded-lg shadow-lg p-8 text-center max-w-4xl mx-auto"style="background-color: #EFF6FF;">
+        <h2 class="text-3xl font-extrabold text-blue-700">Descarga ahora la app de MediConnect</h2>
+        <p class="mt-4 text-lg text-gray-700">
+          Además de poseer control de inventarios y ayudar a tu marketing. Todo en el mismo software administrativo para negocios. ¡Agenda una demo y descubre cómo te hacemos crecer!
+        </p>
+        <div class="mt-8">
+          <img src="Recursos/MediconnectLogo.png" alt="App de MediConnect en móviles" class="mx-auto w-full lg:w-1/2">
+        </div>
+        <div class="mt-6 flex justify-center space-x-4">
+          <a href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store" class="h-12">
+          </a>
+          <a href="#">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play" class="h-12">
+        </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .container {
+      max-width: 1100px;
+    }
+  </style>
+
+  
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900">Preguntas frecuentes sobre MediConnect</h2>
+      <p class="text-center text-lg text-gray-700 mt-4">Si no ves una respuesta a tu pregunta, no dudes en contactarnos.</p>
+  
+      <div class="mt-10 divide-y divide-gray-300">
+        <!-- Pregunta 1 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(1)">
+            <span>¿Qué es una agenda médica?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon1">+</span>
+          </button>
+          <div id="faq1" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            Una agenda médica, agenda médica virtual, agenda para citas médicas o agenda para consultorio médico, es la herramienta más práctica para llevar el orden y seguimiento de las citas médicas de un negocio de salud. Este tipo de programa para agendar citas permite agendar citas médicas en línea y la agenda para médicos se actualiza automáticamente para mayor comodidad de los profesionales.
+          </div>
+        </div>
+  
+        <!-- Pregunta 2 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(2)">
+            <span>¿Cómo hacer una agenda para citas médicas?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon2">+</span>
+          </button>
+          <div id="faq2" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            MediConnect te permite organizar tus citas de manera sencilla, seleccionando los horarios, médicos o profesionales de salud y gestionando los pacientes con facilidad. También puedes automatizar los recordatorios para asegurarte de que los pacientes asistan a sus citas.
+          </div>
+        </div>
+  
+        <!-- Pregunta 3 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(3)">
+            <span>¿Cómo compartir mi agenda de citas?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon3">+</span>
+          </button>
+          <div id="faq3" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            MediConnect facilita el compartir tu agenda con otros usuarios, médicos y profesionales. Puedes asignar diferentes niveles de permisos para garantizar la seguridad y privacidad de la información.
+          </div>
+        </div>
+  
+        <!-- Pregunta 4 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(4)">
+            <span>¿Cómo se maneja una agenda médica?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon4">+</span>
+          </button>
+          <div id="faq4" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            Una agenda médica digital se gestiona de manera centralizada en MediConnect. Los usuarios pueden acceder a las citas, organizar recordatorios y actualizar la información de los pacientes de manera segura y eficiente. Además, se puede acceder desde cualquier dispositivo conectado a internet.
+          </div>
+        </div>
+  
+        <!-- Pregunta 5 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(5)">
+            <span>¿Cuál es la mejor agenda médica online?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon5">+</span>
+          </button>
+          <div id="faq5" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            MediConnect se destaca como una de las mejores agendas médicas online debido a su facilidad de uso, la posibilidad de integrar funcionalidades para la gestión de citas, recordatorios, seguimiento de pacientes y optimización del tiempo tanto para profesionales de la salud como para los usuarios.
+          </div>
+        </div>
+  
+        <!-- Pregunta 6 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(6)">
+            <span>¿Cuánto cuesta una agenda médica para consultorio?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon6">+</span>
+          </button>
+          <div id="faq6" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            MediConnect ofrece diferentes planes según las necesidades del consultorio o del usuario, desde opciones básicas hasta avanzadas con funcionalidades personalizables. Para obtener más información, puedes contactarnos y solicitar una demostración gratuita.
+          </div>
+        </div>
+  
+        <!-- Pregunta 7 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(7)">
+            <span>¿Cómo descargar la app de MediConnect?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon7">+</span>
+          </button>
+          <div id="faq7" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            Puedes descargar la app de MediConnect desde las tiendas de aplicaciones oficiales tanto para dispositivos Android como para iOS. Simplemente busca "MediConnect" en Google Play o App Store.
+          </div>
+        </div>
+  
+        <!-- Pregunta 8 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(8)">
+            <span>¿Hay una agenda médica online gratis?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon8">+</span>
+          </button>
+          <div id="faq8" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            MediConnect ofrece una prueba gratuita para que puedas conocer todas las funcionalidades y ver cómo puede ayudarte a mejorar la gestión de citas en tu centro médico o consultorio. Solicita tu prueba gratuita hoy mismo.
+          </div>
+        </div>
+  
+        <!-- Pregunta 9 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(9)">
+            <span>¿Cómo agendar citas médicas en línea?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon9">+</span>
+          </button>
+          <div id="faq9" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            Con MediConnect, puedes agendar citas médicas en línea de manera sencilla. Solo necesitas crear un perfil, seleccionar el profesional o médico de tu elección, y seleccionar la fecha y hora que mejor se ajuste a tus necesidades.
+          </div>
+        </div>
+  
+        <!-- Pregunta 10 -->
+        <div class="py-4">
+          <button class="w-full text-left text-lg font-semibold text-gray-800 hover:text-blue-600 transition duration-300 focus:outline-none flex justify-between items-center" 
+                  onclick="toggleFAQ(10)">
+            <span>¿Cómo enviar recordatorios con la app MediConnect?</span>
+            <span class="text-blue-600 transform transition duration-300" id="icon10">+</span>
+          </button>
+          <div id="faq10" class="hidden mt-2 text-gray-600 bg-white rounded p-4 shadow-md">
+            La app de MediConnect te permite configurar recordatorios automáticos para citas, tanto por SMS, correo electrónico o WhatsApp. Esto ayuda a reducir las ausencias y mantener a los pacientes informados.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    function toggleFAQ(faqNumber) {
+      const faq = document.getElementById(`faq${faqNumber}`);
+      const icon = document.getElementById(`icon${faqNumber}`);
+      faq.classList.toggle('hidden');
+      icon.textContent = icon.textContent === '+' ? '-' : '+';
+    }
+  </script>
+
+
+
+  
+  
+
+  
+  
+  
+
+
 </body>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Redes Sociales -->
+        <div class="text-center md:text-left">
+          <h3 class="text-lg font-semibold mb-4">Síguenos en redes</h3>
+          <div class="flex justify-center md:justify-start space-x-6">
+            <a href="https://www.facebook.com/profile.php?id=61567244316473&mibextid=ZbWKwL">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="w-8 h-8">
+            </a>
+            <a href="https://twitter.com">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter" class="w-8 h-8">
+            </a>
+            <a href="https://linkedin.com">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg" alt="LinkedIn" class="w-8 h-8">
+            </a>
+            <a href="https://www.instagram.com/mediconnect._/profilecard/?igsh=YzFtZTBwOTlldjZm">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="w-8 h-8">
+            </a>
+          </div>
+        </div>
+  
+        <!-- Información de contacto -->
+        <div class="text-center">
+          <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+          <p>Correo: <a href="mailto:mediconnect40@gmail.com" class="text-blue-400 hover:text-blue-500">mediconnect40@gmail.com</a></p>
+          <p>Teléfono: +52 664 238 2390</p>
+          <p>Dirección: Calzada Tecnologico Tijuana B.C</p>
+        </div>
+  
+        <!-- Descarga la App -->
+        <div class="text-center md:text-right">
+          <h3 class="text-lg font-semibold mb-4">Descarga la app</h3>
+          <div class="flex justify-center md:justify-end space-x-4">
+            <a href="https://play.google.com">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="w-32 h-auto">
+            </a>
+            <a href="https://apple.com">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store" class="h-12">
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Línea separadora -->
+      <hr class="border-t-2 border-white my-8">
+  
+      <!-- Texto interactivo con efecto -->
+      <div class="relative text-center my-12">
+        <p class="text-gray-400 text-sm">¿Listo para una mejor gestión médica?</p>
+        <a href="login.html" class="block text-4xl font-bold hover:text-blue-500 transition-transform transform hover:scale-110">
+          ¡Comienza aquí!
+        </a>
+      </div>
+  
+      <!-- Línea separadora -->
+      <div class="w-full h-1 bg-white my-8"></div>
+  
+      <!-- Enlaces rápidos -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
+        <div>
+          <h3 class="text-lg font-semibold">MediConnect</h3>
+          <ul class="mt-2 space-y-2">
+            <li><a href="acerca.html" class="text-gray-400 hover:text-blue-400">Acerca de</a></li>
+            <li><a href="testimonios.html" class="text-gray-400 hover:text-blue-400">Testimonios</a></li>
+            <li><a href="blog.html" class="text-gray-400 hover:text-blue-400">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Soporte</h3>
+          <ul class="mt-2 space-y-2">
+            <li><a href="ayuda.html" class="text-gray-400 hover:text-blue-400">Ayuda</a></li>
+            <li><a href="privacidad.html" class="text-gray-400 hover:text-blue-400">Política de privacidad</a></li>
+            <li><a href="terminos.html" class="text-gray-400 hover:text-blue-400">Términos y condiciones</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Funcionalidades</h3>
+          <ul class="mt-2 space-y-2">
+            <li><a href="agendamiento.html" class="text-gray-400 hover:text-blue-400">Agendamiento</a></li>
+            <li><a href="historia-clinica.html" class="text-gray-400 hover:text-blue-400">Historia Clínica</a></li>
+            <li><a href="recordatorios.html" class="text-gray-400 hover:text-blue-400">Recordatorios</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Subscripción</h3>
+          <form class="mt-2">
+            <input type="email" class="p-2 rounded-lg w-full bg-gray-800 text-white" placeholder="Ingresa tu email">
+            <button type="submit" class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección dinámica con nombre y logo -->
+    <div class="mt-8 flex flex-col justify-center items-center px-4 md:px-8">
+      <div class="text-white text-sm flex items-center animate-fade-in">
+        <span>MediConnect hecho con el ❤️ por </span>
+        <span id="nombre" class="ml-1"></span>
+      </div>
+      <div>
+        <img src="Recursos/MediconnectLogo.png" alt="Logo" class="w-10 h-10 object-contain mt-4">
+    </div>
+    </div>
+</footer>
+
+<style>
+    /* Animación de fade in/out */
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .animate-fade-in {
+      animation: fadeInOut 5s infinite;
+    }
+</style>
+
+
+<script>
+    // Lista de nombres que cambiarán dinámicamente
+    const nombres = ["Luis Fernando Rodriguez Cruz", "Nayeli Ortiz Garcia", "Jose Eduardo Marquez Santillan", "Maria de los Angeles Diaz Berumen", "Donovan Rojo Chaidez","Leidy Valle","Abraham Ezequiel Garcia Campos"];
+    let index = 0;
+
+    // Función para cambiar los nombres
+    function cambiarNombre() {
+        document.getElementById("nombre").textContent = nombres[index];
+        index = (index + 1) % nombres.length; // Cambia al siguiente nombre
+    }
+
+    // Cambiar el nombre cada 3 segundos
+    setInterval(cambiarNombre, 5000);
+
+    // Iniciar con el primer nombre
+    cambiarNombre();
+</script>
+
+  
+  
+  <!-- Estilos adicionales -->
+  <style>
+    footer a img {
+      transition: transform 0.3s ease;
+    }
+    footer a img:hover {
+      transform: scale(1.2);
+    }
+    footer a:hover {
+      color: #007BFF;
+    }
+  </style>
+  
+  
+  
+  
+  
 </html>
