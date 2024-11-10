@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonios - MediConnect</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-blue-600">MediConnect</a>
+      <nav class="space-x-6">
+        <a href="acerca.html" class="text-gray-700 hover:text-blue-600">Acerca de</a>
+        <a href="testimonios.html" class="text-gray-700 hover:text-blue-600">Testimonios</a>
+        <a href="blog.html" class="text-gray-700 hover:text-blue-600">Blog</a>
+        <a href="ayuda.html" class="text-gray-700 hover:text-blue-600">Ayuda</a>
+      </nav>
+      <div>
+        <a href="login.html" class="text-gray-700 hover:text-blue-600">Ir a mi cuenta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Espaciado para el Header fijo -->
+  <div class="pt-24"></div>
+
+  <!-- Contenido Principal -->
+  <main class="container mx-auto px-6 py-12 flex-grow">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">Testimonios de Nuestros Usuarios</h1>
+    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+      Lee lo que opinan nuestros usuarios y añade tu propio testimonio para ayudar a otros.
+    </p>
+
+    <!-- Sección de Testimonios -->
+    <section id="testimonial-list" class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Testimonios predeterminados -->
+    </section>
+
+    <!-- Formulario para agregar opinión -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Agregar Opinión</h2>
+      <form id="testimonial-form" class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2" for="name">Nombre</label>
+          <input type="text" id="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2" for="profession">Profesión</label>
+          <input type="text" id="profession" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2" for="testimonial">Testimonio</label>
+          <textarea id="testimonial" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">Enviar</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer Simplificado -->
+  <footer class="bg-gray-900 text-white py-6 mt-12">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 MediConnect. Todos los derechos reservados.</p>
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="politica-privacidad.html" class="text-gray-400 hover:text-blue-400">Política de Privacidad</a> | 
+        <a href="terminos-condiciones.html" class="text-gray-400 hover:text-blue-400">Términos y Condiciones</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Obtener testimonios de localStorage o inicializar con valores predeterminados
+    const testimonios = JSON.parse(localStorage.getItem("testimonios")) || [
+      { nombre: "Dra. Ana Martínez", profesion: "Cardióloga", texto: "MediConnect me ha permitido organizar mi agenda médica de forma eficiente y profesional." },
+      { nombre: "Dr. Carlos Ruiz", profesion: "Pediatra", texto: "Mis pacientes reciben recordatorios de sus citas y eso ha reducido significativamente las cancelaciones." }
+    ];
+
+    // Función para renderizar los testimonios
+    function renderTestimonios() {
+      const testimonialList = document.getElementById("testimonial-list");
+      testimonialList.innerHTML = ""; // Limpiar testimonios
+
+      testimonios.forEach((testimonio) => {
+        const testimonioElement = document.createElement("div");
+        testimonioElement.classList.add("bg-white", "p-6", "rounded-lg", "shadow-lg", "mb-4");
+        testimonioElement.innerHTML = `
+          <p class="text-gray-700 italic">"${testimonio.texto}"</p>
+          <p class="mt-4 font-bold text-blue-600">- ${testimonio.nombre}</p>
+          <p class="text-gray-500">${testimonio.profesion}</p>
+        `;
+        testimonialList.appendChild(testimonioElement);
+      });
+    }
+
+    // Manejador de envío del formulario
+    document.getElementById("testimonial-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const nombre = document.getElementById("name").value;
+      const profesion = document.getElementById("profession").value;
+      const texto = document.getElementById("testimonial").value;
+
+      // Agregar nuevo testimonio al arreglo
+      testimonios.push({ nombre, profesion, texto });
+
+      // Guardar testimonios en localStorage
+      localStorage.setItem("testimonios", JSON.stringify(testimonios));
+
+      // Limpiar formulario
+      document.getElementById("testimonial-form").reset();
+
+      // Renderizar nuevamente los testimonios
+      renderTestimonios();
+    });
+
+    // Renderizar testimonios iniciales
+    renderTestimonios();
+  </script>
+</body>
+</html>

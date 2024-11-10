@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planes a Futuro | MediConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script> <!-- Biblioteca Feather Icons -->
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+
+  <!-- Encabezado -->
+  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-blue-600">MediConnect</a>
+      <nav class="space-x-6">
+        <a href="soluciones.html" class="text-gray-700 hover:text-blue-600">Soluciones</a>
+        <a href="funcionalidades.html" class="text-gray-700 hover:text-blue-600">Funcionalidades</a>
+        <a href="precios.html" class="text-gray-700 hover:text-blue-600">Precios</a>
+        <button onclick="window.location.href='registro.html'" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Prueba Gratis</button>
+      </nav>
+      <div>
+        <a href="login.html" class="text-gray-700 hover:text-blue-600">Ir a mi cuenta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal para fijar el footer -->
+  <main class="flex-grow pt-24">
+    <!-- Sección de Planes a Futuro -->
+    <section class="py-16 bg-gradient-to-r from-blue-100 to-blue-50">
+      <div class="container mx-auto text-center">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Planes a Futuro</h1>
+        <p class="text-lg text-gray-700 mb-12">
+          Descubre nuestros proyectos futuros para mejorar el servicio de MediConnect en áreas clave.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          
+          <!-- Plan de Base de Datos -->
+          <div class="p-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-center items-center mb-4">
+              <i data-feather="database" class="w-12 h-12 text-blue-600"></i> <!-- Icono de Base de Datos -->
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Implementación de Base de Datos</h3>
+            <p class="mt-4 text-gray-600">
+              Nuestro objetivo es integrar una base de datos para mejorar la gestión de información y almacenar el historial de usuarios de forma segura y escalable.
+            </p>
+          </div>
+          
+          <!-- Expansión Nacional -->
+          <div class="p-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-center items-center mb-4">
+              <i data-feather="map-pin" class="w-12 h-12 text-blue-600"></i> <!-- Icono de Expansión -->
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Expansión Nacional</h3>
+            <p class="mt-4 text-gray-600">
+              Estamos trabajando en estrategias para que MediConnect esté disponible en múltiples regiones de México, facilitando el acceso a herramientas de salud digital.
+            </p>
+          </div>
+          
+          <!-- Mejora de la Aplicación Móvil -->
+          <div class="p-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-center items-center mb-4">
+              <i data-feather="smartphone" class="w-12 h-12 text-blue-600"></i> <!-- Icono de App Móvil -->
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Optimización de la App Móvil</h3>
+            <p class="mt-4 text-gray-600">
+              Estamos mejorando la app móvil para ofrecer una experiencia más fluida y accesible desde cualquier dispositivo móvil.
+            </p>
+          </div>
+          
+          <!-- Reestructuración para Veterinarias -->
+          <div class="p-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-center items-center mb-4">
+              <i data-feather="heart" class="w-12 h-12 text-blue-600"></i> <!-- Icono de Veterinaria -->
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Adaptación para Veterinarias</h3>
+            <p class="mt-4 text-gray-600">
+              Analizamos la posibilidad de adaptar MediConnect para su uso en veterinarias, cumpliendo con normativas de seguridad en el sector salud.
+            </p>
+          </div>
+          
+          <!-- Innovaciones Tecnológicas -->
+          <div class="p-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-center items-center mb-4">
+              <i data-feather="cpu" class="w-12 h-12 text-blue-600"></i> <!-- Icono de Innovación -->
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Innovaciones Tecnológicas</h3>
+            <p class="mt-4 text-gray-600">
+              Investigamos el uso de tecnologías avanzadas para ofrecer nuevas soluciones a nuestros usuarios y optimizar la gestión de servicios.
+            </p>
+          </div>
+          
+          <!-- Plan Futuro Adicional -->
+          <div class="p-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-center items-center mb-4">
+              <i data-feather="trending-up" class="w-12 h-12 text-blue-600"></i> <!-- Icono del Plan Futuro -->
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Alianzas con Centros Médicos</h3>
+            <p class="mt-4 text-gray-600">
+              En un futuro, esperamos establecer alianzas con centros médicos y farmacias para una integración más completa y eficaz de nuestra plataforma.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Fijo -->
+  <footer class="bg-gray-900 text-white py-6 mt-auto">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 MediConnect. Todos los derechos reservados.</p>
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="politica-privacidad.html" class="text-gray-400 hover:text-blue-400">Política de Privacidad</a> | 
+        <a href="terminos-condiciones.html" class="text-gray-400 hover:text-blue-400">Términos y Condiciones</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    feather.replace(); // Inicializa Feather Icons
+  </script>
+</body>
+</html>
+
+
+
+
+

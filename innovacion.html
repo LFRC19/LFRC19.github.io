@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovación en la Salud | MediConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+
+  <!-- Encabezado -->
+  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-blue-600">MediConnect</a>
+      <nav class="space-x-6">
+        <a href="soluciones.html" class="text-gray-700 hover:text-blue-600">Soluciones</a>
+        <a href="funcionalidades.html" class="text-gray-700 hover:text-blue-600">Funcionalidades</a>
+        <a href="precios.html" class="text-gray-700 hover:text-blue-600">Precios</a>
+        <button onclick="window.location.href='registro.html'" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Prueba Gratis</button>
+      </nav>
+      <div>
+        <a href="login.html" class="text-gray-700 hover:text-blue-600">Ir a mi cuenta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal para fijar el footer -->
+  <main class="flex-grow pt-24">
+    <!-- Sección de Innovación en la Salud en formato de Timeline -->
+    <section class="bg-blue-50 py-16">
+      <div class="container mx-auto text-center">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Innovación en la Salud</h1>
+        <p class="text-lg text-gray-700 mb-12">
+          Explora cómo MediConnect utiliza las últimas innovaciones para transformar el sector de la salud.
+        </p>
+
+        <!-- Timeline de Innovación en Salud -->
+        <div class="relative">
+          <!-- Línea central del timeline -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-600"></div>
+
+          <!-- Elemento 1 -->
+          <div class="relative flex flex-col md:flex-row items-center justify-center mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:w-5/12 w-10/12 mb-6 md:mb-0 md:order-1 order-2">
+              <h3 class="text-2xl font-bold text-blue-600 mb-2">Telemedicina y Consulta en Línea</h3>
+              <p class="text-gray-600">
+                La telemedicina permite a los pacientes acceder a atención médica sin salir de casa. MediConnect facilita la teleconsulta, brindando mayor accesibilidad y optimización del tiempo.
+              </p>
+            </div>
+            <div class="flex justify-center items-center bg-blue-600 text-white rounded-full w-12 h-12 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 order-1 md:order-2">
+              1
+            </div>
+          </div>
+
+          <!-- Elemento 2 -->
+          <div class="relative flex flex-col md:flex-row items-center justify-center mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:w-5/12 w-10/12 mb-6 md:mb-0 md:order-2 order-2">
+              <h3 class="text-2xl font-bold text-blue-600 mb-2">IA en Diagnóstico</h3>
+              <p class="text-gray-600">
+                Con el uso de inteligencia artificial, los médicos pueden detectar patrones y realizar diagnósticos más rápidos y precisos, asistidos por la tecnología de MediConnect.
+              </p>
+            </div>
+            <div class="flex justify-center items-center bg-blue-600 text-white rounded-full w-12 h-12 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 order-1 md:order-1">
+              2
+            </div>
+          </div>
+
+          <!-- Elemento 3 -->
+          <div class="relative flex flex-col md:flex-row items-center justify-center mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:w-5/12 w-10/12 mb-6 md:mb-0 md:order-1 order-2">
+              <h3 class="text-2xl font-bold text-blue-600 mb-2">Seguimiento en Tiempo Real</h3>
+              <p class="text-gray-600">
+                MediConnect permite a los centros de salud mantener un seguimiento continuo de sus pacientes, enviando recordatorios y alertas personalizadas para asegurar la adherencia al tratamiento.
+              </p>
+            </div>
+            <div class="flex justify-center items-center bg-blue-600 text-white rounded-full w-12 h-12 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 order-1 md:order-2">
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 mt-12">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 MediConnect. Todos los derechos reservados.</p>
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="politica-privacidad.html" class="text-gray-400 hover:text-blue-400">Política de Privacidad</a> | 
+        <a href="terminos-condiciones.html" class="text-gray-400 hover:text-blue-400">Términos y Condiciones</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+

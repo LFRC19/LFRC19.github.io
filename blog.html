@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | MediConnect</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+  <!-- Encabezado -->
+  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-blue-600">MediConnect</a>
+      <nav class="space-x-6">
+        <a href="soluciones.html" class="text-gray-700 hover:text-blue-600">Soluciones</a>
+        <a href="funcionalidades.html" class="text-gray-700 hover:text-blue-600">Funcionalidades</a>
+        <a href="precios.html" class="text-gray-700 hover:text-blue-600">Precios</a>
+        <button onclick="window.location.href='registro.html'" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Prueba Gratis</button>
+      </nav>
+      <div>
+        <a href="login.html" class="text-gray-700 hover:text-blue-600">Ir a mi cuenta</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Espacio superior para evitar que el contenido se solape con el header -->
+  <div class="pt-24"></div>
+
+  <!-- Contenido principal -->
+  <main class="flex-grow container mx-auto px-6 py-16">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-8 text-center">Blog de MediConnect</h1>
+    <p class="text-lg text-gray-700 mb-12 text-center">
+      Bienvenido a nuestro blog, donde compartimos contenido sobre tecnología en salud, digitalización de centros médicos y cómo MediConnect puede optimizar la atención médica.
+    </p>
+
+    <!-- Sección de Artículos Destacados -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Artículos Destacados</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Artículo destacado" class="rounded-lg mb-4">
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Transformación Digital en la Atención Médica</h3>
+          <p class="text-gray-700 mb-4">Descubre cómo la digitalización está cambiando la forma en que se brinda atención médica en centros de salud de todo el mundo...</p>
+          <a href="#" class="text-blue-600 font-semibold hover:underline">Leer más</a>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Artículo destacado" class="rounded-lg mb-4">
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Optimización de Agendamiento y Recordatorios</h3>
+          <p class="text-gray-700 mb-4">Los beneficios de los recordatorios automáticos y cómo reducir ausencias en las consultas médicas...</p>
+          <a href="#" class="text-blue-600 font-semibold hover:underline">Leer más</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Artículos Recientes -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Artículos Recientes</h2>
+      <div class="space-y-6">
+        <!-- Artículo reciente 1 -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300 flex items-start">
+          <img src="https://via.placeholder.com/100" alt="Artículo reciente" class="rounded-lg w-24 h-24 mr-6">
+          <div>
+            <h3 class="text-lg font-semibold text-blue-600">Importancia de la Historia Clínica Electrónica</h3>
+            <p class="text-gray-700 mb-2">Explora cómo la historia clínica electrónica mejora la eficiencia y seguridad de los datos de salud...</p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline">Leer más</a>
+          </div>
+        </div>
+        <!-- Artículo reciente 2 -->
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300 flex items-start">
+          <img src="https://via.placeholder.com/100" alt="Artículo reciente" class="rounded-lg w-24 h-24 mr-6">
+          <div>
+            <h3 class="text-lg font-semibold text-blue-600">Automatización de Farmacias en el Siglo XXI</h3>
+            <p class="text-gray-700 mb-2">Cómo la tecnología de MediConnect facilita el control de inventarios en farmacias...</p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline">Leer más</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer simplificado -->
+  <footer class="bg-gray-900 text-white py-6 mt-12">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 MediConnect. Todos los derechos reservados.</p>
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="politica-privacidad.html" class="text-gray-400 hover:text-blue-400">Política de Privacidad</a> | 
+        <a href="terminos-condiciones.html" class="text-gray-400 hover:text-blue-400">Términos y Condiciones</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
