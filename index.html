@@ -25,7 +25,51 @@
     </div>
   </header>
 
+ <!-- Botón de Subir -->
+  <button id="scrollTopButton" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-blue-600 text-white py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition duration-300 ease-in-out flex items-center space-x-2 hidden">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 011.414 0L10 5.414l3.293 3.293a1 1 0 001.414-1.414l-4-4a1 1 0 00-1.414 0l-4 4a1 1 0 000 1.414z" clip-rule="evenodd"></path>
+    </svg>
+    <span>Subir</span>
+  </button>
 
+  <!-- Botón de Bajar -->
+  <button id="scrollBottomButton" onclick="scrollToBottom()" class="fixed bottom-8 left-8 bg-blue-600 text-white py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition duration-300 ease-in-out flex items-center space-x-2">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M14.707 10.293a1 1 0 00-1.414 1.414L15.586 14H4a1 1 0 000 2h11.586l-2.293 2.293a1 1 0 101.414 1.414l4-4a1 1 0 000-1.414l-4-4z" clip-rule="evenodd"></path>
+    </svg>
+    <span>Bajar</span>
+  </button>
+
+  <!-- Script para hacer scroll y mostrar/ocultar botones -->
+  <script>
+    const scrollTopButton = document.getElementById("scrollTopButton");
+    const scrollBottomButton = document.getElementById("scrollBottomButton");
+
+    // Función para hacer scroll hacia arriba
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Función para hacer scroll hacia abajo
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    // Mostrar u ocultar botones dependiendo de la posición de scroll
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY;
+      const bottomPosition = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (scrollPosition > 100) { // Si baja más de 100px
+        scrollTopButton.classList.remove("hidden");
+        scrollBottomButton.classList.add("hidden");
+      } else { // Está cerca de la parte superior
+        scrollTopButton.classList.add("hidden");
+        scrollBottomButton.classList.remove("hidden");
+      }
+    });
+  </script>
 
   <!-- Agregar un margen superior para evitar que el contenido se solape con el encabezado -->
   <div class="pt-24"></div>
